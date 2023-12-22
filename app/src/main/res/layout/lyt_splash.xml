@@ -4,7 +4,8 @@
     android:id="@+id/motionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/lyt_splash_scene">
+    app:layoutDescription="@xml/lyt_splash_scene"
+    android:background="@color/brown">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/backgroundLayout"
