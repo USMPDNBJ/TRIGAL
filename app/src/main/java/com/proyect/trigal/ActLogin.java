@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ActLogin extends AppCompatActivity {
@@ -15,6 +16,10 @@ public class ActLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lyt_login_trigal);
         asignarReferencias();
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
     }
     private void asignarReferencias() {
         edtCorreo = findViewById(R.id.edtCorreo);
