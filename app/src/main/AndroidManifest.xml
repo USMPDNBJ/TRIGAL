@@ -30,6 +30,11 @@
         </activity>
         <activity android:name=".ActLogin"/>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".ActSalaBlanca"/>
+        <activity android:name=".ActSalaMarron"/>
+        <activity android:name=".ActSalaCapacitacion"/>
+        <activity android:name=".ActReservar" />
+
     </application>
 
 </manifest>
