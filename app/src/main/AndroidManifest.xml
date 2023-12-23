@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Trigal"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDO7AI09tyhGs30AOaHIHAEJ0b-_hTtTRw"
+            />
+
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.Splash"
