@@ -60,7 +60,6 @@
             android:fontFamily="sans-serif-black"
             android:lineSpacingExtra="4dp"
             android:text="Experimenta la excelencia en tus reuniones empresariales con la Sala Blanca. Con un aforo de 6 personas, está diseñada pensando en la excelencia y la sofisticación; esta sala de directorio redefine el concepto de reuniones empresariales."
-            android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="18sp"
             android:textStyle="bold"
