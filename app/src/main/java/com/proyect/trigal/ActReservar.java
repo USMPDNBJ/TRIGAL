@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
@@ -27,9 +28,14 @@ public class ActReservar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lyt_form_registro);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
         asignarReferencias();
         setUpDateAndTimePickers();
     }
+
 
     private void asignarReferencias() {
         edtNombre = findViewById(R.id.edtNombreEmpresa);
