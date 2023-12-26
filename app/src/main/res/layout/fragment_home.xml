@@ -22,6 +22,7 @@
                 android:id="@+id/imageView5"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
+                android:background="@drawable/background"
                 app:srcCompat="@drawable/trigal_logo" />
 
             <ViewFlipper
@@ -52,7 +53,7 @@
                             android:id="@+id/textView1"
                             android:layout_width="match_parent"
                             android:layout_height="39dp"
-                            android:background="#027353"
+                            android:background="#65491F"
                             android:text="MÚLTIPLES SALAS"
                             android:textAlignment="center"
                             android:textColor="#FFFFFF"
@@ -81,7 +82,7 @@
                             android:id="@+id/textView2"
                             android:layout_width="match_parent"
                             android:layout_height="39dp"
-                            android:background="#027353"
+                            android:background="#65491F"
                             android:text="SALAS COMODAS"
                             android:textAlignment="center"
                             android:textColor="#FFFFFF"
@@ -110,7 +111,7 @@
                             android:id="@+id/textView3"
                             android:layout_width="match_parent"
                             android:layout_height="39dp"
-                            android:background="#027353"
+                            android:background="#65491F"
                             android:text="SERVICIALIDAD"
                             android:textAlignment="center"
                             android:textColor="#FFFFFF"
@@ -139,7 +140,7 @@
                             android:id="@+id/textView4"
                             android:layout_width="match_parent"
                             android:layout_height="39dp"
-                            android:background="#027353"
+                            android:background="#65491F"
                             android:text="SALAS EXTENSAS"
                             android:textAlignment="center"
                             android:textColor="#FFFFFF"
@@ -150,16 +151,24 @@
                 </LinearLayout>
             </ViewFlipper>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:background="#FFFFFF" />
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="349dp"
                 android:background="@drawable/home_img" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
 
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="59dp"
+                android:background="@drawable/background"
                 android:text="MISIÓN"
                 android:textAlignment="center"
                 android:textColor="#027353"
@@ -170,6 +179,7 @@
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
+                android:background="@drawable/background"
                 android:lineSpacingExtra="8sp"
                 android:text="&quot;En Trigal Coworking, nos comprometemos a proporcionar soluciones de espacios de trabajo flexibles y colaborativos, centrándonos en ofrecer salas de reuniones de calidad para empresarios en Perú. Nuestra misión es crear un entorno profesional y acogedor que fomente la productividad, la innovación y la colaboración entre profesionales y empresas&quot;"
                 android:textAlignment="center"
@@ -180,6 +190,7 @@
                 android:id="@+id/textView7"
                 android:layout_width="match_parent"
                 android:layout_height="59dp"
+                android:background="@drawable/background"
                 android:text="VISIÓN"
                 android:textAlignment="center"
                 android:textColor="#027353"
@@ -190,6 +201,7 @@
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="224dp"
+                android:background="@drawable/background"
                 android:lineSpacingExtra="8sp"
                 android:text="&quot;Nos visualizamos como líderes en la industria de coworking en Perú, siendo reconocidos por nuestra excelencia en la provisión de salas de reuniones que superan las expectativas de nuestros clientes. Buscamos ser un socio estratégico para las empresas al ofrecer espacios flexibles que se adapten a sus necesidades en constante evolución. Aspiramos a ser un referente en la creación de comunidades empresariales vibrantes y conectadas que impulsan el crecimiento mutuo&quot;"
                 android:textAlignment="center"
