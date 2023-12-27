@@ -34,8 +34,6 @@ public class ActLogin extends AppCompatActivity {
 
         ImageView imgFacebook = findViewById(R.id.imgFb);
         ImageView imgInstagram = findViewById(R.id.imgIg);
-        ImageView imgTwitter = findViewById(R.id.imgTw);
-
 
         imgFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,12 +49,7 @@ public class ActLogin extends AppCompatActivity {
             }
         });
 
-        imgTwitter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                abrirUrl("https://www.facebook.com/search/top?q=trigal%20coworking");
-            }
-        });
+
 
         txtLogin.setOnClickListener(new View.OnClickListener() {
             @Override
