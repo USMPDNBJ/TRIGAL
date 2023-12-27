@@ -36,8 +36,8 @@
 
         <LinearLayout
             android:id="@+id/lyt_formulario"
-            android:layout_width="296dp"
-            android:layout_height="511dp"
+            android:layout_width="329dp"
+            android:layout_height="541dp"
             android:layout_gravity="center"
             android:layout_marginTop="80sp"
             android:background="@drawable/style_borde"
