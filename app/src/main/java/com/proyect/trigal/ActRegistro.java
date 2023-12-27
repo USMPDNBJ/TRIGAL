@@ -9,7 +9,7 @@ public class ActRegistro extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lyr_registrar_cliente);
+        setContentView(R.layout.lyt_registrar_cliente);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
