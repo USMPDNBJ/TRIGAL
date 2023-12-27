@@ -9,8 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/background">
+        android:background="@drawable/fondo_form"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,9 +50,10 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="sans-serif-black"
                 android:text="Nombre de la empresa:"
-                android:textColor="#593D25" />
+                android:textColor="#593D25"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/edtNombreEmpresa"
@@ -67,9 +68,10 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="sans-serif-black"
                 android:text="Responsable:"
-                android:textColor="#593D25" />
+                android:textColor="#593D25"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/edtResponsable"
@@ -84,9 +86,10 @@
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="sans-serif-black"
                 android:text="Número de personas:"
-                android:textColor="#593D25" />
+                android:textColor="#593D25"
+                android:textSize="16sp" />
 
             <Spinner
                 android:id="@+id/spNumeroPersonas"
@@ -99,9 +102,10 @@
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="sans-serif-black"
                 android:text="Fecha:"
-                android:textColor="#593D25" />
+                android:textColor="#593D25"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/edtFecha"
@@ -117,9 +121,10 @@
                 android:id="@+id/textView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="sans-serif-black"
                 android:text="Hora:"
-                android:textColor="#593D25" />
+                android:textColor="#593D25"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/edtHora"
