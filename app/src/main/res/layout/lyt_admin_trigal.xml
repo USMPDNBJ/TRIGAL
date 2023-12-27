@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/madera">
+
+
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="416dp"
+        android:layout_height="162dp"
+        android:layout_marginTop="-182dp"
+        android:layout_marginBottom="356dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.478"
+        app:srcCompat="@drawable/trigal_logo" />
+
+    <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="463dp"
+        android:layout_height="528dp"
+        android:layout_marginTop="196dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView22"
+        android:layout_width="199dp"
+        android:layout_height="171dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="204dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:srcCompat="@drawable/mujer" />
+
+    <EditText
+        android:id="@+id/txtUsu"
+        android:layout_width="286dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="420dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="264dp"
+        android:ems="10"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_horizontal"
+        android:inputType="text"
+        android:text="ADMINISTRADORA"
+        android:textColor="#4CAF50"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.363"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.687"
+        tools:ignore="TextSizeCheck,TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/txtDisUsu"
+        android:layout_width="249dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="488dp"
+        android:ems="10"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center_horizontal|center_vertical"
+        android:inputType="text"
+        android:text="ANDREA"
+        android:textColor="#4CAF50"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/btnAbrirAdmin"
+        android:layout_width="253dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="118dp"
+        android:layout_marginEnd="119dp"
+        android:layout_marginBottom="96dp"
+        android:backgroundTint="#027353"
+        android:fontFamily="sans-serif-black"
+        android:onClick="vistAdmin"
+        android:text="Ingresar"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.379"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

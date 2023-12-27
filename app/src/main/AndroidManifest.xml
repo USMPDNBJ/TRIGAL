@@ -33,7 +33,11 @@
         <activity android:name=".ActSalaBlanca"/>
         <activity android:name=".ActSalaMarron"/>
         <activity android:name=".ActSalaCapacitacion"/>
+        <activity android:name=".ActAdmin" />
+        <activity android:name=".ActOpcionAdmin" />
+        <activity android:name=".ActRegistro" />
         <activity android:name=".ActReservar" />
+
 
     </application>
 

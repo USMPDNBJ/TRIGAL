@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="#027353"
+        android:backgroundTint="#027353"
+        android:gravity="center"
+        android:text="REGISTRO DE CLIENTES"
+        android:textColor="#F6F5F5"
+        android:textSize="24sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/edtEmpresa"
+                android:layout_width="220dp"
+                android:layout_height="43dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:hint="Empresa"
+                android:backgroundTint="#027353"
+                android:inputType="text"
+                tools:ignore="MissingConstraints,TouchTargetSizeCheck"
+                tools:layout_editor_absoluteX="95dp"
+                tools:layout_editor_absoluteY="76dp" />
+
+            <EditText
+                android:id="@+id/edtResponsable"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:hint="Responsable"
+                android:backgroundTint="#027353"
+                android:inputType="text"
+                android:minHeight="48dp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="95dp"
+                tools:layout_editor_absoluteY="137dp" />
+
+            <TextView
+                android:id="@+id/txtGenTra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center_horizontal"
+                android:text="Tipo de Documento"
+                android:textColor="#027353"
+                android:textSize="20sp"
+                tools:ignore="DuplicateIds" />
+
+            <Spinner
+                android:id="@+id/spTipDoc"
+                android:layout_width="220dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                tools:ignore="MissingConstraints"
+                android:backgroundTint="#027353"
+                tools:layout_editor_absoluteX="95dp"
+                tools:layout_editor_absoluteY="251dp" />
+
+            <EditText
+                android:id="@+id/edtNumDoc"
+                android:layout_width="220dp"
+                android:layout_height="47dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:hint="Numero de Documento"
+                android:backgroundTint="#027353"
+                android:inputType="number"
+                tools:ignore="MissingConstraints,TouchTargetSizeCheck"
+                tools:layout_editor_absoluteX="95dp"
+                tools:layout_editor_absoluteY="305dp" />
+
+            <EditText
+                android:id="@+id/edtCel"
+                android:layout_width="220dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:hint="Celular"
+                android:backgroundTint="#027353"
+                android:inputType="number"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="95dp"
+                tools:layout_editor_absoluteY="494dp" />
+
+            <EditText
+                android:id="@+id/edtUsuario"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:hint="Usuario"
+                android:backgroundTint="#027353"
+                android:inputType="text"
+                android:minHeight="48dp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="95dp"
+                tools:layout_editor_absoluteY="137dp" />
+
+
+            <EditText
+                android:id="@+id/edtContraseña"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:hint="Contraseña"
+                android:backgroundTint="#027353"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="95dp"
+                tools:layout_editor_absoluteY="137dp" />
+
+            <Button
+                android:id="@+id/btnRegistrarUsu"
+                android:layout_width="233dp"
+                android:layout_height="59dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#027353"
+                android:fontFamily="sans-serif-black"
+                android:text="Registrar"
+                android:textSize="20dp"
+                app:cornerRadius="0sp"
+                tools:ignore="MissingConstraints,TouchTargetSizeCheck"
+                tools:layout_editor_absoluteX="93dp"
+                tools:layout_editor_absoluteY="1013dp" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

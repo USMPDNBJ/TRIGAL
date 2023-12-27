@@ -38,6 +38,7 @@
             android:padding="28dp">
 
             <TextView
+                android:id="@+id/txtLogin"
                 android:layout_width="359dp"
                 android:layout_height="53dp"
                 android:fontFamily="sans-serif-black"
@@ -45,7 +46,8 @@
                 android:textAlignment="center"
                 android:textColor="#027353"
                 android:textSize="32sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:onClick="onTextViewClick"/>
 
             <TextView
                 android:layout_width="wrap_content"

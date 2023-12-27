@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -24,7 +25,23 @@ public class ActLogin extends AppCompatActivity {
     private void asignarReferencias() {
         edtCorreo = findViewById(R.id.edtCorreo);
         edtContraseña = findViewById(R.id.edtContraseña);
+
+
+        TextView txtLogin = findViewById(R.id.txtLogin);
+
+
+        txtLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirvistaAdmin();
+            }
+        });
     }
+    private void abrirvistaAdmin() {
+        Intent intent = new Intent(ActLogin.this, ActAdmin.class);
+        startActivity(intent);
+    }
+
 
     public void IniciarSesion(View view) {
         String correo, contra;
