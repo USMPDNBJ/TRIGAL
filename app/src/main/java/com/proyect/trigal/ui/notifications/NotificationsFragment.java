@@ -31,37 +31,6 @@ public class NotificationsFragment extends Fragment {
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        ImageView clothingImage1 = root.findViewById(R.id.clothingImage1);
-        ImageView clothingImage2 = root.findViewById(R.id.clothingImage2);
-        ImageView clothingImage3 = root.findViewById(R.id.clothingImage3);
-
-
-        clothingImage1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(), ActSalaCapacitacion.class);
-                startActivity(intent);
-            }
-        });
-
-        clothingImage2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getActivity(),  ActSalaBlanca.class);
-                startActivity(intent);
-            }
-        });
-
-        clothingImage3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ActSalaMarron.class);
-                startActivity(intent);
-            }
-        });
-
         return root;
     }
 
