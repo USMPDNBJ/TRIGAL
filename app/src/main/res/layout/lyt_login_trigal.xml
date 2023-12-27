@@ -175,19 +175,8 @@
                     android:onClick="abrirUrl"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-                <ImageView
-                    android:id="@+id/imgTw"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="12dp"
-                    android:background="@drawable/twitter"
-                    android:onClick="abrirUrl"
-                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
 
             </LinearLayout>
-
-
         </LinearLayout>
 
 
