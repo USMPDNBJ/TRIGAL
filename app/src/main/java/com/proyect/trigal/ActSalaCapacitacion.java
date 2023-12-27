@@ -22,7 +22,7 @@ public class ActSalaCapacitacion extends AppCompatActivity {
         btnReservar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActSalaCapacitacion.this, ActReservar.class);
+                Intent intent = new Intent(ActSalaCapacitacion.this, ActReservarSala.class);
                 startActivity(intent);
             }
         });

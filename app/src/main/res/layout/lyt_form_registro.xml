@@ -38,7 +38,7 @@
         <LinearLayout
             android:id="@+id/lyt_formulario"
             android:layout_width="344dp"
-            android:layout_height="503dp"
+            android:layout_height="558dp"
             android:layout_gravity="center"
             android:layout_marginTop="80sp"
             android:background="@drawable/style_borde"
@@ -107,14 +107,15 @@
                 android:textColor="#593D25"
                 android:textSize="16sp" />
 
-            <Spinner
-                android:id="@+id/spNumeroPersonas"
+            <EditText
+                android:id="@+id/edtNumPersonas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
                 android:minHeight="48dp"
                 android:paddingTop="4dp"
                 android:paddingEnd="4dp"
-                android:paddingBottom="4dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
@@ -150,12 +151,37 @@
                 android:paddingTop="4dp"
                 android:paddingEnd="4dp"
                 android:paddingBottom="4dp"
-                android:text="Hora:"
+                android:text="Hora de entrada:"
                 android:textColor="#593D25"
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/edtHora"
+                android:id="@+id/edtHoraEntrada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="hh:mm"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="4dp" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:paddingTop="4dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="4dp"
+                android:text="Hora de salida:"
+                android:textColor="#593D25"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edtHoraSalida"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"

@@ -29,7 +29,7 @@ public class ActSplash2 extends AppCompatActivity {
         TimerTask tarea = new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent(ActSplash2.this, ActReservar.class);
+                Intent intent = new Intent(ActSplash2.this, ActReservarSala.class);
                 startActivity(intent);
                 finish();
             }

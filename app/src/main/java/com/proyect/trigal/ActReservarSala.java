@@ -20,13 +20,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
 
-public class ActReservar extends AppCompatActivity {
+public class ActReservarSala extends AppCompatActivity {
 
-    EditText edtNombre, edtResponsable, edtFecha, edtHora;
-    Spinner spNumeroPersonas;
+    EditText edtNombre, edtResponsable, edtFecha, edtHoraEntrada, edtHoraSalida;
     Button btnReservado;
-    String[] opcPersonas = {"","1-5", "10-15", "15-30", "30-40"};
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,19 +41,20 @@ public class ActReservar extends AppCompatActivity {
         edtNombre = findViewById(R.id.edtNombreEmpresa);
         edtResponsable = findViewById(R.id.edtResponsable);
         edtFecha = findViewById(R.id.edtFecha);
-        edtHora = findViewById(R.id.edtHora);
+        edtHoraEntrada = findViewById(R.id.edtHoraEntrada);
+        edtHoraSalida=findViewById(R.id.edtHoraSalida);
         btnReservado=findViewById(R.id.btnReservado);
         btnReservado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ActReservar.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ActReservarSala.this);
                 builder.setTitle("Confirmación");
                 builder.setMessage("¿Estás seguro de que quieres realizar la reserva?");
                 builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ActReservar.this, "RESERVA REALIZADA CON EXITO", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(ActReservar.this, ActSplash2.class);
+                        Toast.makeText(ActReservarSala.this, "RESERVA REALIZADA CON EXITO", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(ActReservarSala.this, ActSplash2.class);
                         startActivity(intent);
                     }
                 });
@@ -70,10 +68,6 @@ public class ActReservar extends AppCompatActivity {
                 dialog.show();
             }
         });
-        spNumeroPersonas = findViewById(R.id.spNumeroPersonas);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, opcPersonas);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spNumeroPersonas.setAdapter(adapter);
     }
 
     private void setUpDateAndTimePickers() {
@@ -86,7 +80,7 @@ public class ActReservar extends AppCompatActivity {
                 int día = calendario.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialogFecha = new DatePickerDialog(
-                        ActReservar.this,R.style.DatePickerStyle,
+                        ActReservarSala.this,R.style.DatePickerStyle,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -99,7 +93,7 @@ public class ActReservar extends AppCompatActivity {
             }
         });
 
-        edtHora.setOnClickListener(new View.OnClickListener() {
+        edtHoraEntrada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar calendario = Calendar.getInstance();
@@ -107,12 +101,32 @@ public class ActReservar extends AppCompatActivity {
                 int minuto = calendario.get(Calendar.MINUTE);
 
                 TimePickerDialog dialogHora = new TimePickerDialog(
-                        ActReservar.this,R.style.DatePickerStyle,
+                        ActReservarSala.this,R.style.DatePickerStyle,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                                 String horaSeleccionada = hourOfDay + ":" + minute;
-                                edtHora.setText(horaSeleccionada);
+                                edtHoraEntrada.setText(horaSeleccionada);
+                            }
+                        },
+                        hora, minuto, true);
+                dialogHora.show();
+            }
+        });
+        edtHoraSalida.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendario = Calendar.getInstance();
+                int hora = calendario.get(Calendar.HOUR_OF_DAY);
+                int minuto = calendario.get(Calendar.MINUTE);
+
+                TimePickerDialog dialogHora = new TimePickerDialog(
+                        ActReservarSala.this,R.style.DatePickerStyle,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                                String horaSeleccionada = hourOfDay + ":" + minute;
+                                edtHoraSalida.setText(horaSeleccionada);
                             }
                         },
                         hora, minuto, true);
