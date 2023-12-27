@@ -27,7 +27,8 @@
                 android:paddingLeft="5dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="5dp"
-                android:text="Reservación de sala:"
+                android:textAlignment="center"
+                android:text="Reservar Sala"
                 android:textColor="#FFFFFF"
                 android:textColorHighlight="#FFFFFF"
                 android:textColorHint="#FAFAFA"
@@ -36,8 +37,8 @@
 
         <LinearLayout
             android:id="@+id/lyt_formulario"
-            android:layout_width="296dp"
-            android:layout_height="475dp"
+            android:layout_width="344dp"
+            android:layout_height="503dp"
             android:layout_gravity="center"
             android:layout_marginTop="80sp"
             android:background="@drawable/style_borde"

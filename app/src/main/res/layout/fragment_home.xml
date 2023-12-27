@@ -52,7 +52,7 @@
                         <TextView
                             android:id="@+id/textView1"
                             android:layout_width="match_parent"
-                            android:layout_height="39dp"
+                            android:layout_height="wrap_content"
                             android:background="#65491F"
                             android:text="DIVERSIDAD DE SALAS"
                             android:textAlignment="center"
@@ -84,7 +84,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="39dp"
                             android:background="#65491F"
-                            android:text="SERVICIO COMPLETO"
+                            android:text="ESPACIO INSPIRADOR"
                             android:textAlignment="center"
                             android:textColor="#FFFFFF"
                             android:textSize="34sp"
@@ -114,7 +114,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="39dp"
                             android:background="#65491F"
-                            android:text="SERVICIALIDAD"
+                            android:text="AMBIENTE POSITIVO"
                             android:textAlignment="center"
                             android:textColor="#FFFFFF"
                             android:textSize="34sp"
@@ -144,7 +144,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="39dp"
                             android:background="#65491F"
-                            android:text="SALAS EXTENSAS"
+                            android:text="OFICINAS PRIVADAS"
                             android:textAlignment="center"
                             android:textColor="#FFFFFF"
                             android:textSize="34sp"
@@ -153,6 +153,9 @@
                     </LinearLayout>
                 </LinearLayout>
             </ViewFlipper>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="34dp" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -175,16 +178,18 @@
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textStyle="bold" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="349dp"
                 android:background="@drawable/home_img" />
-
             <View
                 android:layout_width="match_parent"
-                android:layout_height="16dp" />
+                android:layout_height="20dp" />
 
             <TextView
                 android:id="@+id/textView7"

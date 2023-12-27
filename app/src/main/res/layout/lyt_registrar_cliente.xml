@@ -36,8 +36,8 @@
 
         <LinearLayout
             android:id="@+id/lyt_formulario"
-            android:layout_width="329dp"
-            android:layout_height="541dp"
+            android:layout_width="342dp"
+            android:layout_height="547dp"
             android:layout_gravity="center"
             android:layout_marginTop="80sp"
             android:background="@drawable/style_borde"
@@ -94,7 +94,7 @@
                 android:textSize="16sp" />
 
             <Spinner
-                android:id="@+id/spNumeroPersonas"
+                android:id="@+id/spTipoDoc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
@@ -114,7 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
+                android:inputType="phone"
                 android:minHeight="48dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -161,11 +161,12 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnReservado"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/btnAgregar"
+                    android:layout_width="175dp"
+                    android:layout_height="60dp"
                     android:backgroundTint="#027353"
-                    android:text="Reservar" />
+                    android:onClick="onRegistrarClick"
+                    android:text="Registrar" />
             </LinearLayout>
 
         </LinearLayout>

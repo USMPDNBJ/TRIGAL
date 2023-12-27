@@ -59,7 +59,7 @@
                     <ImageView
                         android:id="@+id/clothingImage1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="450dp"
                         android:adjustViewBounds="true"
                         android:scaleType="fitXY"
                         android:src="@drawable/sala_capacitacion" />
@@ -102,7 +102,7 @@
                     <ImageView
                         android:id="@+id/clothingImage2"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="450dp"
                         android:adjustViewBounds="true"
                         android:scaleType="fitXY"
                         android:src="@drawable/sala_blanca" />
@@ -145,7 +145,7 @@
                     <ImageView
                         android:id="@+id/clothingImage3"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="450dp"
                         android:adjustViewBounds="true"
                         android:scaleType="fitXY"
                         android:src="@drawable/sala_marron" />
