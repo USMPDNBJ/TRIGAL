@@ -37,7 +37,7 @@
         <activity android:name=".ActOpcionAdmin" />
         <activity android:name=".ActRegistro" />
         <activity android:name=".ActReservar" />
-
+        <activity android:name=".ActSplash2" />
 
     </application>
 

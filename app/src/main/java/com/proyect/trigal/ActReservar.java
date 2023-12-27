@@ -3,6 +3,7 @@ package com.proyect.trigal;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -54,7 +55,9 @@ public class ActReservar extends AppCompatActivity {
                 builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ActReservar.this, "Reserva realizada", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ActReservar.this, "RESERVA REALIZADA CON EXITO", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(ActReservar.this, ActSplash2.class);
+                        startActivity(intent);
                     }
                 });
                 builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
