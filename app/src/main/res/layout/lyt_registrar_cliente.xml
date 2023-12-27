@@ -27,7 +27,7 @@
                 android:paddingLeft="5dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="5dp"
-                android:text="Reservación de sala:"
+                android:text="Registro de usuario:"
                 android:textColor="#FFFFFF"
                 android:textColorHighlight="#FFFFFF"
                 android:textColorHint="#FAFAFA"
@@ -123,7 +123,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
-                android:text="Nombre de usuario:"
+                android:text="Usuario:"
                 android:textColor="#593D25"
                 android:textSize="16sp" />
 
