@@ -1,6 +1,8 @@
 package com.proyect.trigal;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -34,4 +36,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
+    public void reservar(View view){
+        Intent intent = new Intent(this, ActRegistro.class);
+        startActivity(intent);
+    }
 }

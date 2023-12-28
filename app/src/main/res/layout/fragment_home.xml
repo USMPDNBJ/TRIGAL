@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
@@ -17,13 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:background="@drawable/background"
-                app:srcCompat="@drawable/trigal_logo" />
 
             <ViewFlipper
                 android:layout_width="match_parent"
@@ -49,17 +41,6 @@
                             android:layout_height="match_parent"
                             android:background="@drawable/home_slider1" />
 
-                        <TextView
-                            android:id="@+id/textView1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="#65491F"
-                            android:text="DIVERSIDAD DE SALAS"
-                            android:textAlignment="center"
-                            android:textColor="#FFFFFF"
-                            android:textSize="34sp"
-                            android:textStyle="bold"
-                            android:translationY="-40dp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -79,17 +60,6 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/img_vision" />
 
-                        <TextView
-                            android:id="@+id/textView2"
-                            android:layout_width="match_parent"
-                            android:layout_height="39dp"
-                            android:background="#65491F"
-                            android:text="ESPACIO INSPIRADOR"
-                            android:textAlignment="center"
-                            android:textColor="#FFFFFF"
-                            android:textSize="34sp"
-                            android:textStyle="bold"
-                            android:translationY="-40dp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -109,17 +79,6 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/home_slider3" />
 
-                        <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="match_parent"
-                            android:layout_height="39dp"
-                            android:background="#65491F"
-                            android:text="AMBIENTE POSITIVO"
-                            android:textAlignment="center"
-                            android:textColor="#FFFFFF"
-                            android:textSize="34sp"
-                            android:textStyle="bold"
-                            android:translationY="-40dp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -139,85 +98,375 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/home_slider4" />
 
-                        <TextView
-                            android:id="@+id/textView4"
-                            android:layout_width="match_parent"
-                            android:layout_height="39dp"
-                            android:background="#65491F"
-                            android:text="OFICINAS PRIVADAS"
-                            android:textAlignment="center"
-                            android:textColor="#FFFFFF"
-                            android:textSize="34sp"
-                            android:textStyle="bold"
-                            android:translationY="-40dp" />
                     </LinearLayout>
                 </LinearLayout>
             </ViewFlipper>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="34dp" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/textSalas4"
                 android:layout_width="match_parent"
-                android:layout_height="59dp"
-                android:background="@drawable/background"
-                android:text="MISIÓN"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:gravity="center"
+                android:text="SALAS"
                 android:textAlignment="center"
                 android:textColor="#027353"
-                android:textSize="34sp"
-                android:textStyle="bold" />
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.507"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textView6"
+            <LinearLayout
+                android:id="@+id/row1"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:background="@drawable/background"
-                android:lineSpacingExtra="8sp"
-                android:text="&quot;En Trigal Coworking, nos comprometemos a proporcionar soluciones de espacios de trabajo flexibles y colaborativos, centrándonos en ofrecer salas de reuniones de calidad para empresarios en Perú. Nuestra misión es crear un entorno profesional y acogedor que fomente la productividad, la innovación y la colaboración entre profesionales y empresas&quot;"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textStyle="bold" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="match_parent"
+                android:background="#E4E4E4"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="349dp"
-                android:background="@drawable/home_img" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/polosCard1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="reservar"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="30dp">
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="match_parent"
-                android:layout_height="59dp"
-                android:background="@drawable/background"
-                android:text="VISIÓN"
-                android:textAlignment="center"
-                android:textColor="#027353"
-                android:textSize="34sp"
-                android:textStyle="bold" />
+                    <!-- Contenido de la primera tarjeta -->
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="match_parent"
-                android:layout_height="224dp"
-                android:background="@drawable/background"
-                android:lineSpacingExtra="8sp"
-                android:text="&quot;Nos visualizamos como líderes en la industria de coworking en Perú, siendo reconocidos por nuestra excelencia en la provisión de salas de reuniones que superan las expectativas de nuestros clientes. Buscamos ser un socio estratégico para las empresas al ofrecer espacios flexibles que se adapten a sus necesidades en constante evolución. Aspiramos a ser un referente en la creación de comunidades empresariales vibrantes y conectadas que impulsan el crecimiento mutuo&quot;"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textStyle="bold" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="213dp">
 
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="match_parent"
-                android:layout_height="349dp"
-                android:background="@drawable/home_slider2" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/clothingImage1"
+                                android:layout_width="187dp"
+                                android:layout_height="match_parent"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/labroom" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#FFFFFF"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/descriptionText"
+                                    android:layout_width="162dp"
+                                    android:layout_height="39dp"
+                                    android:layout_marginTop="20dp"
+                                    android:background="#FFFFFF"
+                                    android:fontFamily="sans-serif-black"
+                                    android:text="Labroom"
+                                    android:textAlignment="viewStart"
+                                    android:textColor="#373534"
+                                    android:textSize="20sp"
+                                    android:translationX="10dp" />
+
+                                <TextView
+                                    android:id="@+id/textView4"
+                                    android:layout_width="162dp"
+                                    android:layout_height="20dp"
+                                    android:background="#FFFFFF"
+                                    android:text="Aforo: hasta 6 personas"
+                                    android:textAlignment="viewStart"
+                                    android:textColor="#575454"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:translationX="10dp" />
+
+                                <TextView
+                                    android:id="@+id/textView9"
+                                    android:layout_width="162dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:text="Lugar: Sótano coworking "
+                                    android:textAlignment="viewStart"
+                                    android:textColor="#575454"
+                                    android:textStyle="bold"
+                                    android:translationX="10dp" />
+
+                                <LinearLayout
+                                    android:layout_width="162dp"
+                                    android:layout_height="53dp"
+                                    android:orientation="horizontal"
+                                    android:translationX="10dp">
+
+                                    <ImageView
+                                        android:id="@+id/imageView10"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:background="@drawable/wifi" />
+
+                                    <ImageView
+                                        android:id="@+id/imageView11"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginLeft="20dp"
+                                        android:background="@drawable/cofee" />
+
+                                    <ImageView
+                                        android:id="@+id/imageView12"
+                                        android:layout_width="25dp"
+                                        android:layout_height="29dp"
+                                        android:layout_marginLeft="20dp"
+                                        android:background="@drawable/tv" />
+
+                                    <ImageView
+                                        android:id="@+id/imageView13"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginLeft="20dp"
+                                        android:layout_marginTop="2dp"
+                                        android:background="@drawable/pizarra" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/polosCard2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:onClick="reservar"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="30dp">
+
+                    <!-- Contenido de la primera tarjeta -->
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="213dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/clothingImage2"
+                                android:layout_width="187dp"
+                                android:layout_height="match_parent"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/meetingroom" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#FFFFFF"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/descriptionText2"
+                                    android:layout_width="162dp"
+                                    android:layout_height="39dp"
+                                    android:layout_marginTop="20dp"
+                                    android:background="#FFFFFF"
+                                    android:fontFamily="sans-serif-black"
+                                    android:text="Meetingroom"
+                                    android:textAlignment="viewStart"
+                                    android:textColor="#373534"
+                                    android:textSize="20sp"
+                                    android:translationX="10dp" />
+
+                                <TextView
+                                    android:id="@+id/textView14"
+                                    android:layout_width="162dp"
+                                    android:layout_height="20dp"
+                                    android:background="#FFFFFF"
+                                    android:text="Aforo: hasta 6 personas"
+                                    android:textAlignment="viewStart"
+                                    android:textColor="#575454"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:translationX="10dp" />
+
+                                <TextView
+                                    android:id="@+id/textView13"
+                                    android:layout_width="160dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:text="Lugar: Sótano coworking "
+                                    android:textAlignment="viewStart"
+                                    android:textColor="#575454"
+                                    android:textStyle="bold"
+                                    android:translationX="10dp" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:translationX="10dp">
+
+                                    <ImageView
+                                        android:id="@+id/imageView6"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:background="@drawable/wifi" />
+
+                                    <ImageView
+                                        android:id="@+id/imageView7"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginLeft="20dp"
+                                        android:background="@drawable/cofee" />
+
+                                    <ImageView
+                                        android:id="@+id/imageView8"
+                                        android:layout_width="25dp"
+                                        android:layout_height="29dp"
+                                        android:layout_marginLeft="20dp"
+                                        android:background="@drawable/tv" />
+
+                                    <ImageView
+                                        android:id="@+id/imageView9"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginLeft="20dp"
+                                        android:layout_marginTop="2dp"
+                                        android:background="@drawable/pizarra" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/polosCard3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:onClick="reservar"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="30dp">
+
+                    <!-- Contenido de la primera tarjeta -->
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="213dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp"
+                            android:layout_marginEnd="10dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/clothingImage3"
+                                android:layout_width="187dp"
+                                android:layout_height="match_parent"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/sala_capacitacion" />
+
+                            <LinearLayout
+                                android:layout_width="200dp"
+                                android:layout_height="match_parent"
+                                android:background="#FFFFFF"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/descriptionText3"
+                                    android:layout_width="160dp"
+                                    android:layout_height="54dp"
+                                    android:layout_marginTop="20dp"
+                                    android:background="#FFFFFF"
+                                    android:fontFamily="sans-serif-black"
+                                    android:text="Sala de capacitaciones"
+                                    android:textAlignment="viewStart"
+                                    android:textColor="#373534"
+                                    android:textSize="20sp"
+                                    android:translationX="10dp" />
+
+                                <TextView
+                                    android:id="@+id/textView11"
+                                    android:layout_width="160dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:background="#FFFFFF"
+                                    android:text="Aforo: Desde 7 hasta 33 personas"
+                                    android:textAlignment="viewStart"
+                                    android:textColor="#575454"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:translationX="10dp" />
+
+                                <TextView
+                                    android:id="@+id/textView10"
+                                    android:layout_width="160dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:text="Lugar: Segundo piso"
+                                    android:textAlignment="viewStart"
+                                    android:textColor="#575454"
+                                    android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:translationX="10dp">
+
+                                    <ImageView
+                                        android:id="@+id/imageView14"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:background="@drawable/wifi" />
+
+                                    <ImageView
+                                        android:id="@+id/imageView15"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginLeft="20dp"
+                                        android:background="@drawable/cofee" />
+
+                                    <ImageView
+                                        android:id="@+id/imageView16"
+                                        android:layout_width="25dp"
+                                        android:layout_height="29dp"
+                                        android:layout_marginLeft="20dp"
+                                        android:background="@drawable/tv" />
+
+                                    <ImageView
+                                        android:id="@+id/imageView17"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginLeft="20dp"
+                                        android:layout_marginTop="2dp"
+                                        android:background="@drawable/pizarra" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
         </LinearLayout>
 
 
