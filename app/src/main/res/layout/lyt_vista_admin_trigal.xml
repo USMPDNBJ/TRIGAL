@@ -155,7 +155,7 @@
                 android:layout_below="@+id/reservasText"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="3dp"
-                android:src="@drawable/salasadmin" />
+                android:src="@drawable/logo_tercercard" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
