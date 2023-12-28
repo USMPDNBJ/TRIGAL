@@ -32,7 +32,7 @@
         android:layout_width="0dp"
         android:layout_height="148dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="20dp"
@@ -52,8 +52,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:text="Agregar Clientes"
                 android:fontFamily="sans-serif-black"
+                android:text="Agregar Clientes"
                 android:textAlignment="center"
                 android:textColor="#027353"
                 android:textSize="20sp" />
@@ -69,12 +69,60 @@
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
+    <!--carta del medio-->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/reservasCard2"
+        android:layout_width="0dp"
+        android:layout_height="148dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="235dp"
+        android:layout_marginEnd="10dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/row20">
+
+        <!-- Contenido de la tarjeta -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/reservasTextopcion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Reservar Salas"
+                android:textAlignment="center"
+                android:textColor="#027353"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/reservaImagen"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+
+                android:layout_marginTop="40dp"
+                android:src="@drawable/imagen_reservar_salas" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <!--carta del medio-->
+
+
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/reservasCard"
         android:layout_width="0dp"
         android:layout_height="148dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="250dp"
         android:layout_marginEnd="10dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="20dp"

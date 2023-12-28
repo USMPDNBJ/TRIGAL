@@ -20,6 +20,7 @@ public class ActOpcionAdmin extends AppCompatActivity {
 
         CardView cardView1 = findViewById(R.id.clientesCard);
         CardView cardView2 = findViewById(R.id.reservasCard);
+        CardView cardView3 = findViewById(R.id.reservasCard2);
 
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,6 +30,15 @@ public class ActOpcionAdmin extends AppCompatActivity {
             }
         });
 
+        cardView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActOpcionAdmin.this, ActReservarSala.class);
+                startActivity(intent);
+            }
+        });
+
+
         cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,5 +46,7 @@ public class ActOpcionAdmin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
 }
