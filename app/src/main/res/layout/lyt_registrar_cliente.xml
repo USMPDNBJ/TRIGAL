@@ -36,10 +36,10 @@
 
         <LinearLayout
             android:id="@+id/lyt_formulario"
-            android:layout_width="327dp"
-            android:layout_height="523dp"
+            android:layout_width="356dp"
+            android:layout_height="590dp"
             android:layout_gravity="center"
-            android:layout_marginTop="80sp"
+            android:layout_marginTop="46sp"
             android:background="@drawable/style_borde"
             android:orientation="vertical"
             android:paddingLeft="20sp"
@@ -56,15 +56,13 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/edtNombreEmpresa"
+                android:id="@+id/edtNomU"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
                 android:minHeight="48dp"
                 tools:ignore="SpeakableTextPresentCheck" />
-
-            <!-- Agrega los elementos restantes como EditText y Spinner aquí -->
 
             <TextView
                 android:id="@+id/textView3"
@@ -76,7 +74,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/edtResponsable"
+                android:id="@+id/edtResU"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -101,6 +99,24 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:text="Numero de Documento:"
+                android:textColor="#593D25"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edtNumDoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="phone"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -110,7 +126,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/edtCel"
+                android:id="@+id/edtCelU"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -128,7 +144,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/edtUsuario"
+                android:id="@+id/edtUsu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -146,11 +162,11 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/edtContraseña"
+                android:id="@+id/edtConU"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:minHeight="48dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
