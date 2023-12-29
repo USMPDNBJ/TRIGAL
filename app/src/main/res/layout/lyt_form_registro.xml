@@ -1,11 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#027353"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-black"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="5dp"
+            android:text="Reservar Sala"
+            android:textAlignment="textStart"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#FAFAFA"
+            android:textSize="24sp" />
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:contextClickable="false">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,32 +42,9 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#027353"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-black"
-                android:paddingLeft="5dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="5dp"
-                android:text="Reservar Sala"
-                android:textAlignment="textStart"
-                android:textColor="#FFFFFF"
-                android:textColorHighlight="#FFFFFF"
-                android:textColorHint="#FAFAFA"
-                android:textSize="24sp" />
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/lyt_formulario"
             android:layout_width="344dp"
-            android:layout_height="558dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="80sp"
             android:background="@drawable/style_borde"
@@ -59,17 +65,24 @@
                 android:textColor="#593D25"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/edtNombreEmpresa"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputNom"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="4dp"
-                android:paddingBottom="4dp"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:layout_height="match_parent"
+                app:counterEnabled="true"
+                app:endIconMode="custom"
+                app:hintEnabled="true"
+               >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/s"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="8dp"
+                    android:inputType="textEmailAddress"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/textView3"
@@ -83,18 +96,44 @@
                 android:textColor="#593D25"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/edtResponsable"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputRes"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:counterEnabled="true"
+                app:endIconMode="custom"
+                app:hintEnabled="true"
+               >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/s2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="8dp"
+                    android:inputType="textEmailAddress"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tTipSala"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:maxLength="5"
-                android:minHeight="48dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-black"
                 android:paddingTop="4dp"
                 android:paddingEnd="4dp"
                 android:paddingBottom="4dp"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:text="Tipo de Sala"
+                android:textColor="#593D25"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/sTipSala"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#67491A"
+                android:minHeight="48dp" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -108,16 +147,23 @@
                 android:textColor="#593D25"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/edtNumPersonas"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputPer"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="number"
-                android:minHeight="48dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="4dp"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:layout_height="match_parent"
+                app:counterEnabled="true"
+                app:endIconDrawable="@drawable/ic_listo"
+                app:hintEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/s3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="8dp"
+                    android:inputType="textEmailAddress"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/textView6"
@@ -211,4 +257,5 @@
         </LinearLayout>
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+</LinearLayout>

@@ -13,6 +13,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.proyect.trigal.databinding.ActivityMainBinding;
+import com.proyect.trigal.ui.dashboard.DashboardFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void reservar(View view){
-        Intent intent = new Intent(this, ActRegistro.class);
+        Intent intent=new Intent(this, ActReservarSala.class);
         startActivity(intent);
     }
 }
