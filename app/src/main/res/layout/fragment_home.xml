@@ -198,7 +198,7 @@
 
                                 <LinearLayout
                                     android:layout_width="162dp"
-                                    android:layout_height="53dp"
+                                    android:layout_height="35dp"
                                     android:orientation="horizontal"
                                     android:translationX="10dp">
 
