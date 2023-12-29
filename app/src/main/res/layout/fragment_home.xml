@@ -167,6 +167,7 @@
                                     android:layout_marginTop="20dp"
                                     android:background="#FFFFFF"
                                     android:fontFamily="sans-serif-black"
+                                    android:paddingTop="15dp"
                                     android:text="Labroom"
                                     android:textAlignment="viewStart"
                                     android:textColor="#373534"
@@ -175,10 +176,11 @@
 
                                 <TextView
                                     android:id="@+id/textView4"
-                                    android:layout_width="162dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:background="#FFFFFF"
-                                    android:text="Aforo: hasta 6 personas"
+                                    android:paddingTop="15dp"
+                                    android:text="Aforo:  6 personas"
                                     android:textAlignment="viewStart"
                                     android:textColor="#575454"
                                     android:textSize="14sp"
@@ -190,6 +192,7 @@
                                     android:layout_width="162dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="10dp"
+                                    android:paddingTop="15dp"
                                     android:text="Lugar: Sótano coworking "
                                     android:textAlignment="viewStart"
                                     android:textColor="#575454"
@@ -198,8 +201,9 @@
 
                                 <LinearLayout
                                     android:layout_width="162dp"
-                                    android:layout_height="35dp"
+                                    android:layout_height="wrap_content"
                                     android:orientation="horizontal"
+                                    android:paddingTop="15dp"
                                     android:translationX="10dp">
 
                                     <ImageView
@@ -220,7 +224,8 @@
                                         android:layout_width="25dp"
                                         android:layout_height="29dp"
                                         android:layout_marginLeft="20dp"
-                                        android:background="@drawable/tv" />
+                                        android:background="@drawable/tv"
+                                        android:paddingTop="10dp" />
 
                                     <ImageView
                                         android:id="@+id/imageView13"
@@ -271,12 +276,13 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="#FFFFFF"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:paddingTop="15dp">
 
                                 <TextView
                                     android:id="@+id/descriptionText2"
                                     android:layout_width="162dp"
-                                    android:layout_height="39dp"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginTop="20dp"
                                     android:background="#FFFFFF"
                                     android:fontFamily="sans-serif-black"
@@ -289,9 +295,10 @@
                                 <TextView
                                     android:id="@+id/textView14"
                                     android:layout_width="162dp"
-                                    android:layout_height="20dp"
+                                    android:layout_height="wrap_content"
                                     android:background="#FFFFFF"
-                                    android:text="Aforo: hasta 6 personas"
+                                    android:paddingTop="15dp"
+                                    android:text="Aforo:  6 personas"
                                     android:textAlignment="viewStart"
                                     android:textColor="#575454"
                                     android:textSize="14sp"
@@ -303,6 +310,7 @@
                                     android:layout_width="160dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="10dp"
+                                    android:paddingTop="15dp"
                                     android:text="Lugar: Sótano coworking "
                                     android:textAlignment="viewStart"
                                     android:textColor="#575454"
@@ -310,9 +318,10 @@
                                     android:translationX="10dp" />
 
                                 <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:orientation="horizontal"
+                                    android:paddingTop="15dp"
                                     android:translationX="10dp">
 
                                     <ImageView
@@ -389,11 +398,12 @@
                                 <TextView
                                     android:id="@+id/descriptionText3"
                                     android:layout_width="160dp"
-                                    android:layout_height="54dp"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginTop="20dp"
                                     android:background="#FFFFFF"
                                     android:fontFamily="sans-serif-black"
-                                    android:text="Sala de capacitaciones"
+                                    android:paddingTop="15dp"
+                                    android:text="Capacitaciones"
                                     android:textAlignment="viewStart"
                                     android:textColor="#373534"
                                     android:textSize="20sp"
@@ -403,9 +413,9 @@
                                     android:id="@+id/textView11"
                                     android:layout_width="160dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
                                     android:background="#FFFFFF"
-                                    android:text="Aforo: Desde 7 hasta 33 personas"
+                                    android:paddingTop="15dp"
+                                    android:text="Aforo: 7 - 33 personas"
                                     android:textAlignment="viewStart"
                                     android:textColor="#575454"
                                     android:textSize="14sp"
@@ -416,18 +426,18 @@
                                     android:id="@+id/textView10"
                                     android:layout_width="160dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_marginLeft="10dp"
                                     android:layout_marginBottom="10dp"
+                                    android:paddingTop="15dp"
                                     android:text="Lugar: Segundo piso"
-                                    android:textAlignment="viewStart"
                                     android:textColor="#575454"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"
+                                    android:translationX="10dp" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:orientation="horizontal"
+                                    android:paddingTop="15dp"
                                     android:translationX="10dp">
 
                                     <ImageView
