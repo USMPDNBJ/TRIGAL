@@ -98,6 +98,8 @@
                 app:hintEnabled="true"
                 app:startIconDrawable="@drawable/ic_contr"
                 android:hint="Contraseña"
+                app:helperText="CAMPO OBLIGATORIO"
+                app:counterEnabled="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 >
 
