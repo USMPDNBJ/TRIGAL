@@ -15,10 +15,6 @@
         android:gravity="center"
         android:layout_above="@id/card_view"
         android:padding="28dp">
-
-
-
-
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
