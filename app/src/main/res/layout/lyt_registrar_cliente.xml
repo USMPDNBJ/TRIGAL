@@ -125,15 +125,24 @@
                 android:textColor="#593D25"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/edtCelU"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputCelU"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="phone"
-                android:minHeight="48dp"
-                tools:ignore="SpeakableTextPresentCheck" />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:counterEnabled="true"
+                >
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtCelU"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="phone"
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="match_parent"
