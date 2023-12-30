@@ -367,7 +367,7 @@ public class ActReservarSala extends AppCompatActivity {
             }
         });
     }
-    private int añoG,mesG,diaG;
+    private int añoG,mesG,diaG,hourG;
     private void setUpDateAndTimePickers() {
         inpFec.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -405,7 +405,7 @@ public class ActReservarSala extends AppCompatActivity {
                     int año = calendario.get(Calendar.YEAR);
                     int mes = calendario.get(Calendar.MONTH);
                     int dia = calendario.get(Calendar.DAY_OF_MONTH);
-                    int hora = calendario.get(Calendar.HOUR_OF_DAY);
+                    hourG = calendario.get(Calendar.HOUR_OF_DAY);
                     int minuto = calendario.get(Calendar.MINUTE);
 
                     TimePickerDialog dialogHora = new TimePickerDialog(
@@ -419,7 +419,7 @@ public class ActReservarSala extends AppCompatActivity {
 
                                     if (  ((añoG < año && mesG < mes && diaG < dia) || (añoG == año && mesG == mes && diaG==dia && hourOfDay < horaActual) || (añoG == año && mesG == mes && diaG==dia && hourOfDay == horaActual && minute < minutoActual))) {
                                         // Restaurar la hora actual
-                                        hourOfDay = horaActual;
+                                        hourG = horaActual;
                                         minute = minutoActual;
                                     }
 
@@ -434,7 +434,7 @@ public class ActReservarSala extends AppCompatActivity {
                                     inpHorI.getEditText().setText(horaSeleccionada);
                                 }
                             },
-                            hora, minuto, false);
+                            hourG, minuto, false);
 
                     inpHorI.getEditText().clearFocus();
                     dialogHora.show();
@@ -460,9 +460,9 @@ public class ActReservarSala extends AppCompatActivity {
                                     int dia = calendario.get(Calendar.DAY_OF_MONTH);
                                     int horaActual = calendar.get(Calendar.HOUR_OF_DAY);
                                     int minutoActual = calendar.get(Calendar.MINUTE);
-                                    if (  ((añoG < año && mesG < mes && diaG < dia) || (añoG == año && mesG == mes && diaG==dia && hourOfDay < horaActual) || (añoG == año && mesG == mes && diaG==dia && hourOfDay == horaActual && minute < minutoActual))) {
+                                    if ( (hourG<hourOfDay+1) || ((añoG < año && mesG < mes && diaG < dia) || (añoG == año && mesG == mes && diaG==dia && hourOfDay < horaActual) || (añoG == año && mesG == mes && diaG==dia && hourOfDay == horaActual && minute < minutoActual))) {
                                         // Restaurar la hora actual
-                                        hourOfDay = horaActual;
+                                        hourOfDay = hourG+1;
                                         minute = minutoActual;
                                     }
 
@@ -477,7 +477,7 @@ public class ActReservarSala extends AppCompatActivity {
                                     inpHorF.getEditText().setText(horaSeleccionada);
                                 }
                             },
-                            hora, minuto, false);
+                            hora+1, minuto, false);
                     inpHorF.getEditText().clearFocus();
                     dialogHora.show();
                 }
