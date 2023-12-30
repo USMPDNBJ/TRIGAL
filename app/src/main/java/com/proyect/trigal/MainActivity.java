@@ -15,6 +15,8 @@ import androidx.navigation.ui.NavigationUI;
 import com.proyect.trigal.databinding.ActivityMainBinding;
 import com.proyect.trigal.ui.dashboard.DashboardFragment;
 
+import java.util.TimeZone;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
@@ -35,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+        String zonaHoraria = "America/Lima";
+        TimeZone.setDefault(TimeZone.getTimeZone(zonaHoraria));
     }
 
     public void reservar(View view){
