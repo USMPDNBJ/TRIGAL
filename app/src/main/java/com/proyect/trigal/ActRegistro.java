@@ -53,7 +53,7 @@ public class ActRegistro extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if (s.toString().isEmpty()) {
                     inpNombre.setErrorEnabled(true);
-                    inpNombre.setError("*CAMPO OBLIGATORIO");
+                    inpNombre.setError("SEXO EN NEW YORK");
                 } else {
                     inpNombre.setErrorEnabled(false);
                 }
