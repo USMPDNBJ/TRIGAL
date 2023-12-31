@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -26,6 +27,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -150,7 +153,7 @@ public class ActReservarSala extends AppCompatActivity {
                 String selectedItem = (String) parent.getItemAtPosition(position);
                 // Realizar la validación correspondiente según el texto seleccionado
                 if (selectedItem.equals("Labroom")) {
-                    inpPer.setHelperText("*Desde 1 a 6 personas*".toUpperCase());
+                    inpPer.setHelperText("*Desde 1 a 6 personas*");
                     inpPer.getEditText().addTextChangedListener(new TextWatcher() {
                         @Override
                         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -186,7 +189,7 @@ public class ActReservarSala extends AppCompatActivity {
                         // Implementación del TextWatcher para la opción 1
                     });
                 } else if (selectedItem.equals("Meetingroom")) {
-                    inpPer.setHelperText("*Desde 1 a 6 personas*".toUpperCase());
+                    inpPer.setHelperText("*Desde 1 a 6 personas*");
                     // Validación para la opción 2
                     inpPer.getEditText().addTextChangedListener(new TextWatcher() {
                         @Override
@@ -226,7 +229,7 @@ public class ActReservarSala extends AppCompatActivity {
                         // Implementación del TextWatcher para la opción 2
                     });
                 } else if (selectedItem.equals("Sala de capacitaciones")) {
-                    inpPer.setHelperText("*Desde 7 a 33 personas*".toUpperCase());
+                    inpPer.setHelperText("*Desde 7 a 33 personas*");
                     // Validación para la opción 3
                     inpPer.getEditText().addTextChangedListener(new TextWatcher() {
                         @Override
@@ -266,7 +269,7 @@ public class ActReservarSala extends AppCompatActivity {
                         // Implementación del TextWatcher para la opción 3
                     });
                 }
-                    inpPer.setErrorEnabled(false);
+                inpPer.setErrorEnabled(false);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -338,9 +341,32 @@ public class ActReservarSala extends AppCompatActivity {
                     inpHorF.setErrorTextAppearance(R.style.ErrorAppearance);
                     verikai=false;
                 }else{
-                    inpHorF.setError(null);
-                    inpHorF.setErrorTextAppearance(R.style.ErrorAppearance);
+                    String horaEntradaString = inpHorI.getEditText().getText().toString();
+                    String horaSalidaString = inpHorF.getEditText().getText().toString();
+
+// Convertir los valores de hora a objetos LocalTime
+                    LocalTime horaEntradas = null;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        horaEntradas = LocalTime.parse(horaEntradaString, DateTimeFormatter.ofPattern("HH:mm"));
+                    }
+                    LocalTime horaSalidas = null;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        horaSalidas = LocalTime.parse(horaSalidaString, DateTimeFormatter.ofPattern("HH:mm"));
+                    }
+
+// Validar que la hora de salida sea al menos una hora posterior a la hora de entrada
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        if (horaSalidas.isBefore(horaEntradas.plusHours(1))) {
+                            // La hora de salida es anterior a la hora de entrada + 1 hora
+                            inpHorI.setErrorTextAppearance(R.style.ErrorAppearance);
+                            inpHorF.setErrorTextAppearance(R.style.ErrorAppearance);
+                            inpHorF.setError("*Debe tener 1 hora de diferencia*".toUpperCase());
+                            inpHorI.setError("*Debe tener 1 hora de diferencia*".toUpperCase());
+                            verikai=false;
+                        }
+                    }
                 }
+
                 if(verikai == false){
                     Toast.makeText(ActReservarSala.this, "Error en el ingreso", Toast.LENGTH_SHORT).show();
                 }else {
@@ -367,7 +393,7 @@ public class ActReservarSala extends AppCompatActivity {
             }
         });
     }
-    private int añoG,mesG,diaG,hourG;
+    private int añoG,mesG,diaG,hourG,minuteG;
     private void setUpDateAndTimePickers() {
         inpFec.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -406,7 +432,7 @@ public class ActReservarSala extends AppCompatActivity {
                     int mes = calendario.get(Calendar.MONTH);
                     int dia = calendario.get(Calendar.DAY_OF_MONTH);
                     hourG = calendario.get(Calendar.HOUR_OF_DAY);
-                    int minuto = calendario.get(Calendar.MINUTE);
+                    minuteG = calendario.get(Calendar.MINUTE);
 
                     TimePickerDialog dialogHora = new TimePickerDialog(
                             ActReservarSala.this, R.style.DatePickerStyle,
@@ -414,13 +440,13 @@ public class ActReservarSala extends AppCompatActivity {
                                 @Override
                                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                                     Calendar calendar = Calendar.getInstance();
-                                    int horaActual = calendar.get(Calendar.HOUR_OF_DAY);
-                                    int minutoActual = calendar.get(Calendar.MINUTE);
 
-                                    if (  ((añoG < año && mesG < mes && diaG < dia) || (añoG == año && mesG == mes && diaG==dia && hourOfDay < horaActual) || (añoG == año && mesG == mes && diaG==dia && hourOfDay == horaActual && minute < minutoActual))) {
+                                    if (  ((añoG < año && mesG < mes && diaG < dia) || (añoG == año && mesG == mes && diaG==dia && hourOfDay < hourG) || (añoG == año && mesG == mes && diaG==dia && hourOfDay == hourG && minute < hourG))) {
                                         // Restaurar la hora actual
-                                        hourG = horaActual;
-                                        minute = minutoActual;
+                                        hourOfDay = hourG;
+                                        minute = minuteG;
+                                    }else{
+                                        minuteG=minute;
                                     }
 
                                     String x = "", y = "";
@@ -430,11 +456,12 @@ public class ActReservarSala extends AppCompatActivity {
                                     if (minute < 10) {
                                         y = "0";
                                     }
+                                    hourG=hourOfDay;
                                     String horaSeleccionada = x + hourOfDay + ":" + y + minute;
                                     inpHorI.getEditText().setText(horaSeleccionada);
                                 }
                             },
-                            hourG, minuto, false);
+                            hourG, minuteG, true);
 
                     inpHorI.getEditText().clearFocus();
                     dialogHora.show();
@@ -460,10 +487,10 @@ public class ActReservarSala extends AppCompatActivity {
                                     int dia = calendario.get(Calendar.DAY_OF_MONTH);
                                     int horaActual = calendar.get(Calendar.HOUR_OF_DAY);
                                     int minutoActual = calendar.get(Calendar.MINUTE);
-                                    if ( (hourG<hourOfDay+1) || ((añoG < año && mesG < mes && diaG < dia) || (añoG == año && mesG == mes && diaG==dia && hourOfDay < horaActual) || (añoG == año && mesG == mes && diaG==dia && hourOfDay == horaActual && minute < minutoActual))) {
+                                    if (  (hourOfDay<hourG+1) || ((añoG < año && mesG < mes && diaG < dia) || (añoG == año && mesG == mes && diaG==dia && hourOfDay < horaActual) || (añoG == año && mesG == mes && diaG==dia && hourOfDay == horaActual && minute < minuteG))) {
                                         // Restaurar la hora actual
                                         hourOfDay = hourG+1;
-                                        minute = minutoActual;
+                                        minute = minuteG;
                                     }
 
                                     String x = "", y = "";
@@ -477,7 +504,7 @@ public class ActReservarSala extends AppCompatActivity {
                                     inpHorF.getEditText().setText(horaSeleccionada);
                                 }
                             },
-                            hora+1, minuto, false);
+                            hourG+1, minuteG, true);
                     inpHorF.getEditText().clearFocus();
                     dialogHora.show();
                 }

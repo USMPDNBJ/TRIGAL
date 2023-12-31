@@ -94,8 +94,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:drawablePadding="8dp"
-                            android:inputType="textEmailAddress"
-                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
+                            android:inputType="text"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+                            />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
@@ -124,8 +126,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:drawablePadding="8dp"
-                            android:inputType="textEmailAddress"
-                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
+                            android:inputType="text"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                            />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
@@ -168,7 +172,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:endIconDrawable="@drawable/ic_listo"
-                        app:hintEnabled="true">
+                        app:hintEnabled="true"
+                        app:helperTextTextAppearance="@style/TextAppearance.AppCompat.Subhead"                        >
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/s3"
@@ -176,7 +181,8 @@
                             android:layout_height="match_parent"
                             android:drawablePadding="8dp"
                             android:inputType="number"
-                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
+                            />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
@@ -223,7 +229,7 @@
                         android:id="@+id/inpHoraInicio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="HH:MM"
+                        android:hint="HH:mm"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         app:endIconDrawable="@drawable/ic_listo"
                         app:hintEnabled="true"
@@ -253,10 +259,12 @@
                         android:id="@+id/inpHoraFinal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="HH:MM"
+                        android:hint="HH:mm"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         app:endIconDrawable="@drawable/ic_listo"
                         app:hintEnabled="true"
+                        app:helperText="*Diferencia de 1 hora de la hora de entrada*"
+                        app:helperTextTextAppearance="@style/TextAppearance.AppCompat.Subhead"
                         >
 
                         <com.google.android.material.textfield.TextInputEditText
