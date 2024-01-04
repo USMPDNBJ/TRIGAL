@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "151171843457",
+    "project_id": "trigal-f98be",
+    "storage_bucket": "trigal-f98be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:151171843457:android:dac2acd881d7748486d480",
+        "android_client_info": {
+          "package_name": "com.proyect.trigal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDntHEnf3BM1p3o2N6RR6R5QQcovJtVWkA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
