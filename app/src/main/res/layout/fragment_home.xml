@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context=".ui.home.HomeFragment">
 
     <ScrollView
@@ -106,7 +107,6 @@
                 android:id="@+id/textSalas4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
                 android:gravity="center"
                 android:text="SALAS"
                 android:textAlignment="center"
@@ -123,7 +123,7 @@
                 android:id="@+id/row1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#E4E4E4"
+                android:background="@drawable/background"
                 android:orientation="vertical"
                 android:padding="10dp">
 
