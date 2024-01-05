@@ -35,6 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class ActRegistro extends AppCompatActivity {
+    //NO LA CAGUES MIERDA
     private final String[] tpD = {"", "DNI", "RUC"};
     private final String[] atributos = {"", "Empresa","Responsable", "Celular", "Usuario", "Número de documento"};
     private TextInputLayout inpNombre, inpResponsabe, inpCelular, inpCorreo, inpContraseña, inpNumDoc, inpBus;
