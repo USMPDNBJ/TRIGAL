@@ -1,46 +1,46 @@
 package com.proyect.trigal;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class ActLogin extends AppCompatActivity {
-    private EditText edtCorreo, edtContraseña;
+
+    private FirebaseAuth mAuth;
+    private EditText emailEditText, passwordEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lyt_login_trigal);
-        asignarReferencias();
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
-    }
 
-    private void asignarReferencias() {
-        edtCorreo = findViewById(R.id.edtCorreo);
-        edtContraseña = findViewById(R.id.edtContraseña);
+        mAuth = FirebaseAuth.getInstance();
 
+        emailEditText = findViewById(R.id.emailEditText);
+        passwordEditText = findViewById(R.id.passwordEditText);
         TextView txtLogin = findViewById(R.id.txtLogin);
 
-        ImageView imgFacebook = findViewById(R.id.imgFb);
-        ImageView imgInstagram = findViewById(R.id.imgIg);
-
-        imgFacebook.setOnClickListener(v -> abrirUrl("https://www.facebook.com/search/top?q=trigal%20coworking"));
-
-        imgInstagram.setOnClickListener(v -> abrirUrl("https://www.instagram.com/trigalcoworking/"));
+        Button loginButton = findViewById(R.id.btnIniciar);
 
         txtLogin.setOnClickListener(v -> abrirVistaAdmin());
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loginUser();
+            }
+        });
     }
 
     private void abrirVistaAdmin() {
@@ -48,42 +48,22 @@ public class ActLogin extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void IniciarSesion(View view) {
-        String correo = edtCorreo.getText().toString().trim();
-        String contra = edtContraseña.getText().toString().trim();
 
-        // Limpiar errores previos
-        edtCorreo.setError(null);
-        edtContraseña.setError(null);
+    private void loginUser() {
+        String email = emailEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
 
-        // Verificar si algún campo está vacío
-        if (TextUtils.isEmpty(correo)) {
-            edtCorreo.setError("Por favor, ingresa tu correo");
-            return;
-        }
-
-        if (TextUtils.isEmpty(contra)) {
-            edtContraseña.setError("Por favor, ingresa tu contraseña");
-            return;
-        }
-
-        if (validarCredenciales(correo, contra)) {
-            // Verificar si es un usuario y contraseña válidos (solo para ejemplo)
-            Intent intent = new Intent(ActLogin.this, MainActivity.class);
-            startActivity(intent);
-        } else {
-            Toast.makeText(ActLogin.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private boolean validarCredenciales(String correo, String contra) {
-        // Lógica para validar las credenciales (ejemplo)
-        return correo.equals("1") && contra.equals("1");
-    }
-
-    private void abrirUrl(String url) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(url));
-        startActivity(intent);
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(ActLogin.this, MainActivity.class));
+                            finish();
+                        } else {
+                            Toast.makeText(ActLogin.this, "Error al iniciar sesión", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }
