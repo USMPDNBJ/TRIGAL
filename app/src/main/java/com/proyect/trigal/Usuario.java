@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Usuario implements Parcelable {
-    //NO LA CAGUES MIERDA
+
     private String nombreEmpresa;
     private String responsable;
     private String numeroDocumento;

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -44,10 +46,13 @@ public class ActRegistro extends AppCompatActivity {
     private ListView lvUsuarios;
     private FirebaseAuth mAuth;
 
+    private ArrayList<Usuario> listUsu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lyt_registrar_cliente);
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
@@ -58,6 +63,64 @@ public class ActRegistro extends AppCompatActivity {
         botonBuscar();
         botonEliminar();
         botonModificar();
+        lvUsuarios.setOnCreateContextMenuListener(this);
+        lvUsuarios = findViewById(R.id.lvUsuarios);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        getMenuInflater().inflate(R.menu.menu_contextual, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        // Obtén la información del elemento seleccionado si es necesario
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        // Maneja la acción del menú según el ID del elemento seleccionado
+        if (item.getItemId() == R.id.menu_ver) {
+            mostrarInformacionUsuario(listUsu.get(info.position));
+            return true;
+        } else if (item.getItemId() == R.id.menu_modificar) {
+            // Lógica para la opción "Modificar"
+            // Puedes lanzar la actividad de modificación aquí
+            // algo así como: lanzarActividadModificar(listUsu.get(info.position));
+            return true;
+        } else if (item.getItemId() == R.id.menu_delete) {
+            // Lógica para la opción "Eliminar"
+            eliminarUsuario(listUsu.get(info.position));
+            return true;
+        } else {
+            return super.onContextItemSelected(item);
+        }
+    }
+
+    private void mostrarInformacionUsuario(Usuario usuario) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setCancelable(true);
+        alertDialogBuilder.setTitle("Información del Usuario");
+
+        StringBuilder messageBuilder = new StringBuilder();
+        messageBuilder.append("Nombre de la empresa: ").append(usuario.getNombreEmpresa()).append("\n")
+                .append("Responsable: ").append(usuario.getResponsable()).append("\n")
+                .append("Número de documento: ").append(usuario.getNumeroDocumento()).append("\n")
+                .append("Celular: ").append(usuario.getCelular()).append("\n")
+                .append("Correo electrónico: ").append(usuario.getCorreo()).append("\n")
+                .append("Contraseña: ").append(usuario.getContraseña()).append("\n");
+
+        alertDialogBuilder.setMessage(messageBuilder.toString());
+        alertDialogBuilder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog dialog = alertDialogBuilder.create();
+        dialog.show();
+    }
+
+    private void eliminarUsuario(Usuario usuario) {
+
     }
 
     public void asignarReferencia() {
