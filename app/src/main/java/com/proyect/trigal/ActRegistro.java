@@ -45,6 +45,7 @@ public class ActRegistro extends AppCompatActivity {
     private Button btnAgregar, btnModificar, btnEliminar,btnBuscar;
     private ListView lvUsuarios;
     private FirebaseAuth mAuth;
+    private String nomEmp, responsa, numDocu, celu, corre, contras;
 
     private ArrayList<Usuario> listUsu;
 
@@ -74,20 +75,16 @@ public class ActRegistro extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        // Obtén la información del elemento seleccionado si es necesario
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
-        // Maneja la acción del menú según el ID del elemento seleccionado
+
         if (item.getItemId() == R.id.menu_ver) {
             mostrarInformacionUsuario(listUsu.get(info.position));
             return true;
         } else if (item.getItemId() == R.id.menu_modificar) {
-            // Lógica para la opción "Modificar"
-            // Puedes lanzar la actividad de modificación aquí
-            // algo así como: lanzarActividadModificar(listUsu.get(info.position));
+
             return true;
         } else if (item.getItemId() == R.id.menu_delete) {
-            // Lógica para la opción "Eliminar"
             eliminarUsuario(listUsu.get(info.position));
             return true;
         } else {
@@ -120,8 +117,46 @@ public class ActRegistro extends AppCompatActivity {
     }
 
     private void eliminarUsuario(Usuario usuario) {
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference(Usuario.class.getSimpleName());
+        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                final boolean[] usuarioEncontrado = {false};
+                for (DataSnapshot x : snapshot.getChildren()) {
+                    if (usuario.equals(x.getValue(Usuario.class))) {
+                        AlertDialog.Builder a = new AlertDialog.Builder(ActRegistro.this);
+                        a.setCancelable(false);
+                        a.setTitle("Confirmación de eliminación");
+                        a.setMessage("¿Está seguro(a) que desea eliminar al usuario?");
+                        a.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                usuarioEncontrado[0] = true;
+                                x.getRef().removeValue();
+                                listarUsuarios();
+                            }
+                        });
+                        a.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Código para cancelar la eliminación
+                            }
+                        });
+                        a.show();
+                        break;
+                    }
+                }
+                if (!usuarioEncontrado[0]) {
+                    Toast.makeText(ActRegistro.this, "No se encontró al usuario", Toast.LENGTH_SHORT).show();
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
+
 
     public void asignarReferencia() {
         inpNombre = findViewById(R.id.textInputNomU);
@@ -440,9 +475,26 @@ public class ActRegistro extends AppCompatActivity {
 
                 alertDialogBuilder.setMessage(messageBuilder.toString());
                 alertDialogBuilder.show();
+                enviarDatos(usu);
             }
         });
     }
+    private void enviarDatos(Usuario u){
+        inpNombre.getEditText().setText(u.getNombreEmpresa());
+        inpResponsabe.getEditText().setText(u.getResponsable());
+        if(inpNumDoc.getEditText().length()==8){
+            spTipoDoc.setSelection(1);
+        } else if(inpNumDoc.getEditText().length()==9){
+            spTipoDoc.setSelection(2);
+        }
+        inpNumDoc.getEditText().setText(u.getNumeroDocumento());
+        inpCelular.getEditText().setText(u.getCelular());
+        inpCorreo.getEditText().setText(u.getCorreo());
+        inpContraseña.getEditText().setText(u.getContraseña());
+        inpBus.getEditText().setText(u.getNombreEmpresa());
+        spAtributoBus.setSelection(1);
+    }
+
 ///////////////////////////////////////////////////////
     private String obtenerAtributo() {
         return spAtributoBus.getSelectedItem().toString();
@@ -548,61 +600,68 @@ public class ActRegistro extends AppCompatActivity {
                 if (campoIngresado.isEmpty()){
                     Toast.makeText(ActRegistro.this, "Complete el campo", Toast.LENGTH_SHORT).show();
                 }else{
-                    DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference(Usuario.class.getSimpleName());
-                    dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            final boolean[] res = {false};
-                            for (DataSnapshot x : snapshot.getChildren()) {
-                                if(campoIngresado.equalsIgnoreCase(x.child(valorAtributo).getValue().toString()))
-                                {
-                                    AlertDialog.Builder a = new AlertDialog.Builder(ActRegistro.this);
-                                    a.setCancelable(false);
-                                    a.setTitle("Confirmación de eliminación");
-                                    a.setMessage("¿Esta seguro(a) que desea eliminar al usuario?");
-                                    a.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            res[0] = true;
-                                            x.getRef().removeValue();
-                                            listarUsuarios();
-                                        }
-                                    });
-                                    a.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-
-                                        }
-                                    });
-                                    a.show();
-                                    break;
-                                }
-                            }
-                            if(res[0] ==false){
-                                Toast.makeText(ActRegistro.this, "No se encontro al usuario", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+                    eliminarUsuario(campoIngresado, valorAtributo);
                 }
             }
         });
     }
+
+    private void eliminarUsuario(String campoIngresado, String valorAtributo){
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference(Usuario.class.getSimpleName());
+        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                final boolean[] res = {false};
+                for (DataSnapshot x : snapshot.getChildren()) {
+                    if(campoIngresado.equalsIgnoreCase(x.child(valorAtributo).getValue().toString()))
+                    {
+                        AlertDialog.Builder a = new AlertDialog.Builder(ActRegistro.this);
+                        a.setCancelable(false);
+                        a.setTitle("Confirmación de eliminación");
+                        a.setMessage("¿Esta seguro(a) que desea eliminar al usuario?");
+                        a.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                res[0] = true;
+                                x.getRef().removeValue();
+                                listarUsuarios();
+                                limpiarCampos();
+                            }
+                        });
+                        a.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        a.show();
+                        break;
+                    }
+                }
+                if(res[0] ==false){
+                    Toast.makeText(ActRegistro.this, "No se encontro al usuario", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 ///////////////////////////////////////////////////////
-/*    private void botonModificar(){
+    private void botonModificar(){
         btnModificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                llenar();
                 if (camposVacios()) {
-                    Toast.makeText(ActReservar.this, "Complete los campos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActRegistro.this, "Complete los campos", Toast.LENGTH_SHORT).show();
                 } else if (hayErrores()) {
-                    Toast.makeText(ActReservar.this, "Solucione los errores para seguir el proceso", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActRegistro.this, "Solucione los errores para seguir el proceso", Toast.LENGTH_SHORT).show();
                 } else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(ActReservar.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(ActRegistro.this);
                     builder.setMessage("¿Deseas modifcar los datos del cliente?").setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             modificarCliente();
@@ -621,12 +680,6 @@ public class ActRegistro extends AppCompatActivity {
         });
     }
     private void modificarCliente() {
-        String nomEmpresa = inpNombre.getEditText().getText().toString().trim();
-        String responsable = inpResponsabe.getEditText().getText().toString().trim();
-        String numeroDocumento = inpNumDoc.getEditText().getText().toString().trim();
-        String celular = inpCelular.getEditText().getText().toString().trim();
-        String nombreUsuario = inpCorreo.getEditText().getText().toString().trim();
-        String contraseña = inpContraseña.getEditText().getText().toString().trim();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference dbref = db.getReference(Usuario.class.getSimpleName());
         dbref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -639,12 +692,20 @@ public class ActRegistro extends AppCompatActivity {
                 for(DataSnapshot x : snapshot.getChildren()){
                     if(x.child(valorAtributo).getValue().toString().equalsIgnoreCase(campoIngresado)){
                         res=true;
-                        //inpNombre.setText(x.child(campoIngresado).getValue().toString());
+                        x.getRef().child("nombreEmpresa").setValue(nomEmp);
+                        x.getRef().child("responsable").setValue(responsa);
+                        x.getRef().child("numeroDocumento").setValue(numDocu);
+                        x.getRef().child("celular").setValue(celu);
+                        x.getRef().child("correo").setValue(corre);
+                        x.getRef().child("contraseña").setValue(contras);
+                        listarUsuarios();
+                        Toast.makeText(ActRegistro.this, "Reserva Modificada", Toast.LENGTH_LONG).show();
+                        limpiarCampos();
                         break;
                     }
                 }
                 if(res==false){
-                    Toast.makeText(ActReservar.this, "NO SE PUEDE MODIFICAR", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActRegistro.this, "NO SE PUEDE MODIFICAR", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -653,17 +714,16 @@ public class ActRegistro extends AppCompatActivity {
 
             }
         });
-    }*/
-
-    private void botonModificar(){
-        btnModificar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ActRegistro.this, ActLogin.class);
-                startActivity(intent);
-            }
-        });
     }
+    private void llenar(){
+        nomEmp = inpNombre.getEditText().getText().toString();
+        responsa = inpResponsabe.getEditText().getText().toString();
+        numDocu = inpNumDoc.getEditText().getText().toString();
+        celu = inpCelular.getEditText().getText().toString();
+        corre = inpCorreo.getEditText().getText().toString();
+        contras = inpContraseña.getEditText().getText().toString();
+    }
+
 ///////////////////////////////////////////////////////
     private boolean hayErrores() {
         return tieneError(inpNombre) || tieneError(inpResponsabe) || tieneError(inpNumDoc) || tieneError(inpCelular) || tieneError(inpCorreo) || tieneError(inpContraseña);
