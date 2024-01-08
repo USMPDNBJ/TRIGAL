@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -483,9 +484,9 @@ public class ActRegistro extends AppCompatActivity {
         inpNombre.getEditText().setText(u.getNombreEmpresa());
         inpResponsabe.getEditText().setText(u.getResponsable());
         if(inpNumDoc.getEditText().length()==8){
-            spTipoDoc.setSelection(1);
-        } else if(inpNumDoc.getEditText().length()==9){
             spTipoDoc.setSelection(2);
+        } else if(inpNumDoc.getEditText().length()==11){
+            spTipoDoc.setSelection(1);
         }
         inpNumDoc.getEditText().setText(u.getNumeroDocumento());
         inpCelular.getEditText().setText(u.getCelular());
@@ -607,6 +608,7 @@ public class ActRegistro extends AppCompatActivity {
     }
 
     private void eliminarUsuario(String campoIngresado, String valorAtributo){
+        final String[] correoUsuarioEliminar = new String[1];
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference(Usuario.class.getSimpleName());
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -626,6 +628,8 @@ public class ActRegistro extends AppCompatActivity {
                                 x.getRef().removeValue();
                                 listarUsuarios();
                                 limpiarCampos();
+                                correoUsuarioEliminar[0] = x.child("correo").getValue().toString();
+                                eliminarUsuarioAutenticacion(correoUsuarioEliminar[0]);
                             }
                         });
                         a.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -639,7 +643,7 @@ public class ActRegistro extends AppCompatActivity {
                     }
                 }
                 if(res[0] ==false){
-                    Toast.makeText(ActRegistro.this, "No se encontro al usuario", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ActRegistro.this, "No se encontro al usuario", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -649,6 +653,25 @@ public class ActRegistro extends AppCompatActivity {
             }
         });
     }
+
+    private void eliminarUsuarioAutenticacion(String emailUsuario) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null && user.getEmail().equals(emailUsuario)) {
+            user.delete()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(ActRegistro.this, "Usuario eliminado de la autenticación", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(ActRegistro.this, "Error al eliminar el usuario de la autenticación", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+    }
+
 
 ///////////////////////////////////////////////////////
     private void botonModificar(){
