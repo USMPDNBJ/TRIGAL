@@ -13,7 +13,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.proyect.trigal.databinding.ActivityMainBinding;
-import com.proyect.trigal.ui.dashboard.DashboardFragment;
 
 import java.util.TimeZone;
 
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void reservar(View view){
-        Intent intent=new Intent(this, ActReservarSala.class);
+        Intent intent=new Intent(MainActivity.this, ActReservarSalaUsu.class);
         startActivity(intent);
     }
 }

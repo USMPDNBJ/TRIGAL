@@ -1,5 +1,4 @@
 package com.proyect.trigal;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 public class ActAdmin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +20,6 @@ public class ActAdmin extends AppCompatActivity {
             actionBar.hide();
         }
     }
-
     public void vistAdmin(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Ingrese la contraseña");

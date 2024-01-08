@@ -35,6 +35,7 @@
         <activity android:name=".ActOpcionAdmin" />
         <activity android:name=".ActRegistro" />
         <activity android:name=".ActReservarSala" />
+        <activity android:name=".ActReservarSalaUsu" />
         <activity android:name=".ActSplash2" />
     </application>
 </manifest>

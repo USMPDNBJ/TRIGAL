@@ -39,9 +39,10 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
-public class ActReservarSala extends AppCompatActivity {
+
+public class ActReservarSalaUsu extends AppCompatActivity {
     private TextInputLayout inpNom,inpRes,inpPer,inpFec,inpHorI,inpHorF,inpBus;
-    private Button btnReservado,btnEliminar,btnModificar,btnBuscar;
+    private Button btnReservado,btnEliminar,btnBuscar;
     private  Spinner spnTipSal,spnFil;
     private String salas[]={"Labroom","Meetingroom","Sala de capacitaciones"};
     private String filtros[]={"Buscar por:","Empresa","Responsable","Sala","Personas","Fecha","HoraEntrada","HoraSalida"};
@@ -53,38 +54,50 @@ public class ActReservarSala extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lyt_form_reserva);
+        setContentView(R.layout.lyt_form_reserva_usuario);
         ActionBar actionBar = getSupportActionBar();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Reservas");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Itera sobre los hijos del nodo "Reservas"
+                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                    String id = childSnapshot.getKey();
+                    Toast.makeText(ActReservarSalaUsu.this,id+"",Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
         if (actionBar != null) {
             actionBar.hide();
         }
         asignarReferencias();
         setUpDateAndTimePickers();
         botonRegistrar();
-        botonModificar();
         botonEliminar();
         botonBuscar();
         listarReservas();
     }
     private void asignarReferencias() {
-        inpNom= findViewById(R.id.inputNom);
-        inpRes= findViewById(R.id.inputRes);
-        inpPer= findViewById(R.id.inputPer);
-        inpFec= findViewById(R.id.edtFecha);
-        inpHorI= findViewById(R.id.inpHoraInicio);
-        inpHorF= findViewById(R.id.inpHoraFinal);
-        inpBus=findViewById(R.id.inpBuscar);
-        spnTipSal=findViewById(R.id.sTipSala);
-        spnFil=findViewById(R.id.spnFiltro);
-        lstRes=findViewById(R.id.listReservas);
+        inpNom= findViewById(R.id.inputNomUsu);
+        inpRes= findViewById(R.id.inputResUsu);
+        inpPer= findViewById(R.id.inputPerUsu);
+        inpFec= findViewById(R.id.edtFechaUsu);
+        inpHorI= findViewById(R.id.inpHoraInicioUsu);
+        inpHorF= findViewById(R.id.inpHoraFinalUsu);
+        inpBus=findViewById(R.id.inpBuscarUsu);
+        spnTipSal=findViewById(R.id.sTipSalaUsu);
+        spnFil=findViewById(R.id.spnFiltroUsu);
+        lstRes=findViewById(R.id.listReservasUsu);
         ArrayAdapter adapterS=new ArrayAdapter(this,android.R.layout.simple_list_item_1, salas);
         ArrayAdapter adapterF=new ArrayAdapter(this,android.R.layout.simple_list_item_1, filtros);
         spnTipSal.setAdapter(adapterS);
         spnFil.setAdapter(adapterF);
-        btnReservado=findViewById(R.id.btnReservado);
-        btnEliminar=findViewById(R.id.btnEliminar);
-        btnModificar=findViewById(R.id.btnEditar);
-        btnBuscar=findViewById(R.id.btnBuscar);
+        btnReservado=findViewById(R.id.btnReservadoUsu);
+        btnEliminar=findViewById(R.id.btnEliminarUsu);
+        btnBuscar=findViewById(R.id.btnBuscarUsu);
         selectUser=Calendar.getInstance();
         hourG=selectUser.get(Calendar.HOUR_OF_DAY);
         minuteG=selectUser.get(Calendar.MINUTE);
@@ -302,8 +315,7 @@ public class ActReservarSala extends AppCompatActivity {
             }
         });
     }
-   private void llenaryvalidar(){
-
+    private void llenaryvalidar(){
        nom=inpNom.getEditText().getText().toString();
        res=inpRes.getEditText().getText().toString();
        numP=inpPer.getEditText().getText().toString();
@@ -395,7 +407,7 @@ public class ActReservarSala extends AppCompatActivity {
        dbref.addListenerForSingleValueEvent(new ValueEventListener() {
            @Override
            public void onDataChange(@NonNull DataSnapshot snapshot) {
-               if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                    for (DataSnapshot x : snapshot.getChildren()) {
                        Reservas r= x.getValue(Reservas.class);
                        DateTimeFormatter formatoFecha = null;
@@ -434,7 +446,7 @@ public class ActReservarSala extends AppCompatActivity {
                if(verikai == false){
                    verikai=false;
                }else {
-                   AlertDialog.Builder builder = new AlertDialog.Builder(ActReservarSala.this);
+                   AlertDialog.Builder builder = new AlertDialog.Builder(ActReservarSalaUsu.this);
                    builder.setTitle("Confirmación");
                    builder.setMessage("¿Estás seguro de que quieres realizar la reserva?");
                    builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
@@ -446,18 +458,16 @@ public class ActReservarSala extends AppCompatActivity {
                                    Reservas reserva = new Reservas(nom,res,tipS,numP,fec,horI,horS);
                                    dbref.push().setValue(reserva);
                                    ocultarTeclado();
-                                   Toast.makeText(ActReservarSala.this, "Reserva realizada", Toast.LENGTH_LONG).show();
+                                   Toast.makeText(ActReservarSalaUsu.this, "Reserva realizada", Toast.LENGTH_LONG).show();
                                    limpiar();
                                    deshabilitar();
                                    hourG=selectUser.get(Calendar.HOUR_OF_DAY);
                                    minuteG=selectUser.get(Calendar.MINUTE);
                                }
                                @Override
-                               public void onCancelled(@NonNull DatabaseError error) {
-
-                               }
+                               public void onCancelled(@NonNull DatabaseError error) {}
                            });
-                           Toast.makeText(ActReservarSala.this, "RESERVA REALIZADA CON EXITO", Toast.LENGTH_SHORT).show();
+                           Toast.makeText(ActReservarSalaUsu.this, "RESERVA REALIZADA CON EXITO", Toast.LENGTH_SHORT).show();
                        }
                    });
                    builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -473,7 +483,6 @@ public class ActReservarSala extends AppCompatActivity {
            @Override
            public void onCancelled(@NonNull DatabaseError error) {}
        });
-
    }
     private void botonRegistrar(){
         btnReservado.setOnClickListener(new View.OnClickListener() {
@@ -498,7 +507,7 @@ public class ActReservarSala extends AppCompatActivity {
                             String aux2=inpFec.getEditText().getText().toString();
                             for (DataSnapshot x : snapshot.getChildren()){
                                 if (aux2.equalsIgnoreCase(x.child("fecha").getValue().toString()) && aux.equalsIgnoreCase(x.child("horaEntrada").getValue().toString())){
-                                    AlertDialog.Builder alert=new AlertDialog.Builder(ActReservarSala.this);
+                                    AlertDialog.Builder alert=new AlertDialog.Builder(ActReservarSalaUsu.this);
                                     val=true;
                                     alert.setCancelable(false);
                                     alert.setTitle("PREGUNTA");
@@ -516,7 +525,7 @@ public class ActReservarSala extends AppCompatActivity {
                                             ocultarTeclado();
                                             x.getRef().removeValue();
                                             listarReservas();
-                                            Toast.makeText(ActReservarSala.this, "Reserva eliminada", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(ActReservarSalaUsu.this, "Reserva eliminada", Toast.LENGTH_LONG).show();
                                             limpiar();
                                             deshabilitar();
                                         }
@@ -527,7 +536,7 @@ public class ActReservarSala extends AppCompatActivity {
                             }
                             if (val==false){
                                 ocultarTeclado();
-                                Toast.makeText(ActReservarSala.this, "No se ha encontrado la reserva", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ActReservarSalaUsu.this, "No se ha encontrado la reserva", Toast.LENGTH_LONG).show();
                             }
                         }
                         @Override
@@ -535,70 +544,6 @@ public class ActReservarSala extends AppCompatActivity {
                         }
                     });
                 }
-        });
-    }
-    private void botonModificar(){
-        btnModificar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    llenaryvalidar();
-                    if (verikai == false){
-                        Toast.makeText(ActReservarSala.this,"Error en los datos",Toast.LENGTH_SHORT).show();
-                    }else{
-                        FirebaseDatabase db=FirebaseDatabase.getInstance();
-                        DatabaseReference dbref=db.getReference(Reservas.class.getSimpleName());
-                        dbref.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                boolean val=false;
-                                String aux=inpHorI.getEditText().getText().toString();
-                                String aux2=inpFec.getEditText().getText().toString();
-                                for (DataSnapshot x : snapshot.getChildren()){
-                                    if (aux2.equalsIgnoreCase(x.child("fecha").getValue().toString()) && aux.equalsIgnoreCase(x.child("horaEntrada").getValue().toString())){
-                                        val=true;
-                                        AlertDialog.Builder alert=new AlertDialog.Builder(ActReservarSala.this);
-                                        alert.setCancelable(false);
-                                        alert.setTitle("PREGUNTA");
-                                        alert.setMessage("¿Estás seguro de modificar la reserva?");
-                                        alert.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                            }
-                                        });
-                                        alert.setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                x.getRef().child("fecha").setValue(fec);
-                                                x.getRef().child("empresa").setValue(nom);
-                                                x.getRef().child("horaEntrada").setValue(horI);
-                                                x.getRef().child("horaSalida").setValue(horS);
-                                                x.getRef().child("personas").setValue(numP);
-                                                x.getRef().child("responsable").setValue(res);
-                                                x.getRef().child("sala").setValue(tipS);
-                                                ocultarTeclado();
-                                                listarReservas();
-                                                Toast.makeText(ActReservarSala.this, "Reserva Modificada", Toast.LENGTH_LONG).show();
-                                                limpiar();
-                                                deshabilitar();
-                                            }
-                                        });
-                                        alert.show();
-                                        break;
-                                    }
-                                }
-                                if (val==false){
-                                    limpiar();
-                                    deshabilitar();
-                                    ocultarTeclado();
-                                    Toast.makeText(ActReservarSala.this, "No se ha encontrado la reserva", Toast.LENGTH_LONG).show();
-                                }
-                            }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                        }
-                    });
-                }
-            }
         });
     }
     private String obtenerValorAtributoComoFireBase(String atributo){
@@ -629,12 +574,10 @@ public class ActReservarSala extends AppCompatActivity {
                 valorAtributo = "";
                 break;
         }
-
         return valorAtributo;
-
     }
     private void mostrarReservasEncontrada(ArrayList<Reservas> reservas) {
-        ArrayAdapter <Reservas> adapRes= new ArrayAdapter<Reservas>(ActReservarSala.this, android.R.layout.simple_list_item_1,reservas);
+        ArrayAdapter <Reservas> adapRes= new ArrayAdapter<Reservas>(ActReservarSalaUsu.this, android.R.layout.simple_list_item_1,reservas);
         lstRes.setAdapter(adapRes);
         lstRes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -665,7 +608,7 @@ public class ActReservarSala extends AppCompatActivity {
                             }
                         }
                         if(res==false){
-                            Toast.makeText(ActReservarSala.this, "No se encontro al usuario", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ActReservarSalaUsu.this, "No se encontro al usuario", Toast.LENGTH_SHORT).show();
                             listarReservas();
                             ocultarTeclado();
                         }else{
@@ -692,7 +635,7 @@ public class ActReservarSala extends AppCompatActivity {
                     int mes = calendario.get(Calendar.MONTH);
                     int dia=calendario.get(Calendar.DAY_OF_MONTH);
                     DatePickerDialog dialogFecha = new DatePickerDialog(
-                            ActReservarSala.this, R.style.DatePickerStyle,
+                            ActReservarSalaUsu.this, R.style.DatePickerStyle,
                             new DatePickerDialog.OnDateSetListener() {
                                 @Override
                                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -723,7 +666,7 @@ public class ActReservarSala extends AppCompatActivity {
                     int minutoActual = calendario.get(Calendar.MINUTE);
                     horaActual= calendario.get(Calendar.HOUR_OF_DAY);
                     TimePickerDialog dialogHora = new TimePickerDialog(
-                            ActReservarSala.this, R.style.DatePickerStyle,
+                            ActReservarSalaUsu.this, R.style.DatePickerStyle,
                             new TimePickerDialog.OnTimeSetListener() {
                                 @Override
                                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -762,7 +705,7 @@ public class ActReservarSala extends AppCompatActivity {
                     int minutoActual = calendar.get(Calendar.MINUTE);
                         if (hasFocus) {
                             TimePickerDialog dialogHora = new TimePickerDialog(
-                                    ActReservarSala.this, R.style.DatePickerStyle, new TimePickerDialog.OnTimeSetListener() {
+                                    ActReservarSalaUsu.this, R.style.DatePickerStyle, new TimePickerDialog.OnTimeSetListener() {
                                         @Override
                                         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                                             if ((hourOfDay < hourG+1) || (hourOfDay==hourG+1 && minute<minuteG)){
@@ -793,7 +736,7 @@ public class ActReservarSala extends AppCompatActivity {
         FirebaseDatabase db= FirebaseDatabase.getInstance();
         DatabaseReference dbref=db.getReference(Reservas.class.getSimpleName());
         ArrayList<Reservas> lisrec= new ArrayList<Reservas>();
-        ArrayAdapter <Reservas> adapRes= new ArrayAdapter<Reservas>(ActReservarSala.this, android.R.layout.simple_list_item_1,lisrec);
+        ArrayAdapter <Reservas> adapRes= new ArrayAdapter<Reservas>(ActReservarSalaUsu.this, android.R.layout.simple_list_item_1,lisrec);
         lstRes.setAdapter(adapRes);
         dbref.addChildEventListener(new ChildEventListener() {
             @Override
@@ -802,26 +745,16 @@ public class ActReservarSala extends AppCompatActivity {
                 lisrec.add(reserv);
                 adapRes.notifyDataSetChanged();
             }
-
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 adapRes.notifyDataSetChanged();
             }
-
             @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-            }
-
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
             @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
         lstRes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
