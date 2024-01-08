@@ -810,6 +810,8 @@ public class ActRegistro extends AppCompatActivity {
         inpCorreo.getEditText().setText("");
         inpContraseña.getEditText().setText("");
         spTipoDoc.setSelection(0);
+        spAtributoBus.setSelection(0);
+        inpBus.getEditText().setText("");
     }
 
 }
