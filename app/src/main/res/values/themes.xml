@@ -29,4 +29,9 @@
         <item name="android:background">@drawable/boton_selector</item>
 
     </style>
+    <style name="BottomNavigation">
+        <item name="android:background">@color/teal_700</item>
+        <item name="itemIconTint">@color/white</item>
+        <item name="itemTextColor">@color/white</item>
+    </style>
 </resources>

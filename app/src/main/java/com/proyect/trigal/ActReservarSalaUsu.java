@@ -396,6 +396,7 @@ public class ActReservarSalaUsu extends AppCompatActivity {
    private void validacionSincronica(){
        FirebaseDatabase db=FirebaseDatabase.getInstance();
        DatabaseReference dbref=db.getReference(Reservas.class.getSimpleName());
+       DatabaseReference usuRef = db.getReference("Usuario").child(key).child("Reservas");
        dbref.addListenerForSingleValueEvent(new ValueEventListener() {
            @Override
            public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -449,6 +450,7 @@ public class ActReservarSalaUsu extends AppCompatActivity {
                                public void onDataChange(@NonNull DataSnapshot snapshot) {
                                    Reservas reserva = new Reservas(nom,res,tipS,numP,fec,horI,horS,key);
                                    dbref.push().setValue(reserva);
+                                   usuRef.push().setValue(new Reservas(nom, res, tipS, numP, fec, horI, horS, key));
                                    ocultarTeclado();
                                    Toast.makeText(ActReservarSalaUsu.this, "Reserva realizada", Toast.LENGTH_LONG).show();
                                    limpiar();
