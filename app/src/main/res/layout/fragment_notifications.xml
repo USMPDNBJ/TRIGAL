@@ -73,6 +73,7 @@
             android:layout_marginLeft="20sp"
             android:layout_marginRight="20sp"
             android:backgroundTint="#027353"
+            android:onClick="reservar"
             android:text="Agrega una nueva reserva aqui"
             android:textSize="16sp" />
 

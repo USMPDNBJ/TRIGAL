@@ -47,7 +47,7 @@ public class ActReservarSala extends AppCompatActivity {
     private String filtros[]={"Buscar por:","Empresa","Responsable","Sala","Personas","Fecha","HoraEntrada","HoraSalida"};
     private  Boolean verikai=true;
     private ListView lstRes;
-    private String nom,res,numP,tipS,fec,horI,horS;
+    private String nom,res,numP,tipS,fec,horI,horS,key="andrea";
     private Calendar selectUser;
     private int añoG,mesG,diaG,hourG,minuteG,hourF,minuteF;
     @Override
@@ -443,7 +443,7 @@ public class ActReservarSala extends AppCompatActivity {
                            dbref.addListenerForSingleValueEvent(new ValueEventListener() {
                                @Override
                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                   Reservas reserva = new Reservas(nom,res,tipS,numP,fec,horI,horS);
+                                   Reservas reserva = new Reservas(nom,res,tipS,numP,fec,horI,horS,key);
                                    dbref.push().setValue(reserva);
                                    ocultarTeclado();
                                    Toast.makeText(ActReservarSala.this, "Reserva realizada", Toast.LENGTH_LONG).show();

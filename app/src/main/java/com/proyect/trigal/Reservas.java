@@ -4,8 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Reservas implements Parcelable {
-    private String empresa, responsable, sala,personas,fecha,horaEntrada,horaSalida;
-
+    private String empresa, responsable, sala,personas,fecha,horaEntrada,horaSalida,usuario;
     public Reservas(String empresa, String responsable, String sala, String personas, String fecha, String horaEntrada, String horaSalida) {
         this.empresa = empresa;
         this.responsable = responsable;
@@ -15,7 +14,25 @@ public class Reservas implements Parcelable {
         this.horaEntrada = horaEntrada;
         this.horaSalida = horaSalida;
     }
+    public Reservas(String empresa, String responsable, String sala, String personas, String fecha, String horaEntrada, String horaSalida,String usuario) {
+        this.empresa = empresa;
+        this.responsable = responsable;
+        this.sala = sala;
+        this.personas = personas;
+        this.fecha = fecha;
+        this.horaEntrada = horaEntrada;
+        this.horaSalida = horaSalida;
+        this.usuario=usuario;
+    }
     public Reservas() {
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getEmpresa() {

@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -48,37 +49,28 @@ public class ActReservarSalaUsu extends AppCompatActivity {
     private String filtros[]={"Buscar por:","Empresa","Responsable","Sala","Personas","Fecha","HoraEntrada","HoraSalida"};
     private  Boolean verikai=true;
     private ListView lstRes;
-    private String nom,res,numP,tipS,fec,horI,horS;
+    private String nom,res,numP,tipS,fec,horI,horS,key;
     private Calendar selectUser;
     private int añoG,mesG,diaG,hourG,minuteG,hourF,minuteF;
+    Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lyt_form_reserva_usuario);
         ActionBar actionBar = getSupportActionBar();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Reservas");
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // Itera sobre los hijos del nodo "Reservas"
-                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                    String id = childSnapshot.getKey();
-                    Toast.makeText(ActReservarSalaUsu.this,id+"",Toast.LENGTH_LONG).show();
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
         if (actionBar != null) {
             actionBar.hide();
         }
+        intent = getIntent();
+        key = intent.getStringExtra("key");
         asignarReferencias();
         setUpDateAndTimePickers();
         botonRegistrar();
         botonEliminar();
         botonBuscar();
         listarReservas();
+
     }
     private void asignarReferencias() {
         inpNom= findViewById(R.id.inputNomUsu);
@@ -455,7 +447,7 @@ public class ActReservarSalaUsu extends AppCompatActivity {
                            dbref.addListenerForSingleValueEvent(new ValueEventListener() {
                                @Override
                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                   Reservas reserva = new Reservas(nom,res,tipS,numP,fec,horI,horS);
+                                   Reservas reserva = new Reservas(nom,res,tipS,numP,fec,horI,horS,key);
                                    dbref.push().setValue(reserva);
                                    ocultarTeclado();
                                    Toast.makeText(ActReservarSalaUsu.this, "Reserva realizada", Toast.LENGTH_LONG).show();
@@ -742,8 +734,10 @@ public class ActReservarSalaUsu extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Reservas reserv=snapshot.getValue(Reservas.class);
-                lisrec.add(reserv);
-                adapRes.notifyDataSetChanged();
+                if (key.equals(reserv.getUsuario())){
+                    lisrec.add(reserv);
+                    adapRes.notifyDataSetChanged();
+                }
             }
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {

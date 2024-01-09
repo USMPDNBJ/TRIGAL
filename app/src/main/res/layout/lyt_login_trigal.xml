@@ -60,7 +60,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputCorreo"
+                android:id="@+id/inpCorreoLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:endIconDrawable="@drawable/ic_listo"
@@ -76,9 +76,10 @@
                     android:id="@+id/emailEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
                     android:drawablePadding="8dp"
                     android:hint="Usuario"
+                    android:inputType="textEmailAddress"
+                    android:textStyle="bold"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -91,7 +92,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputContraseña"
+                android:id="@+id/inpContraseñaLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:endIconMode="password_toggle"
@@ -107,8 +108,9 @@
                     android:id="@+id/passwordEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
                     android:drawablePadding="8dp"
+                    android:inputType="textPassword"
+                    android:textStyle="bold"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
